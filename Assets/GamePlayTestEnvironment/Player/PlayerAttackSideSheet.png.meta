@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 78520f96c3034704fbdbf687165a9dff
+guid: 9252595e0175f8640afde73837838bbc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,11 +43,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.5, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -108,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PlayerAttackSideSheet_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 11
+        width: 16
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.585}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fcc4ea399325484397eb82903b6e3d9
+      internalID: -2062017352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackSideSheet_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 11
+        width: 34
+        height: 23
+      alignment: 9
+      pivot: {x: 0.355, y: 0.585}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2618ac2707381a44183ec5d86d2ed359
+      internalID: -1430702095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackSideSheet_2
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 11
+        width: 20
+        height: 23
+      alignment: 9
+      pivot: {x: 0.55, y: 0.585}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94a1d64ec3f17de4fb6edf3432a8f9c3
+      internalID: 1306513377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerAttackSideSheet_3
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 11
+        width: 15
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.59}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb5f8ec0c279f51439cf391023b19e44
+      internalID: -2015127057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +203,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PlayerAttackSideSheet_0: -2062017352
+      PlayerAttackSideSheet_1: -1430702095
+      PlayerAttackSideSheet_2: 1306513377
+      PlayerAttackSideSheet_3: -2015127057
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

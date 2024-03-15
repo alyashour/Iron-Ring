@@ -4,10 +4,9 @@ using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 /*
- * Intended for use as a component on the player game object
- * Author: Aiden
+    Intended for use as a component on the player game object
+    Author: Aiden
 */
 
 public class PlayerMovement : MonoBehaviour
@@ -23,24 +22,15 @@ public class PlayerMovement : MonoBehaviour
     // Place holder struct ref used in smooth dampening
     private Vector2 movementInputSmoothedVelocity;
 
-
-
     // The player speed
     [SerializeField] float speed = 1.75f;
     // The amount of time it takes to smooth the movement (basically how slippy the movement feels)
     private float smoothTime = 0.05f;
 
-
-
-
-
     private void FixedUpdate()
     {
         // Moves the player
         Move();
-
-        // Flips the sprite axis based on the input
-        Animate();
 
     }
 
@@ -53,24 +43,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = smoothedMovementInput * speed;
     }
 
-
-    // Flips the sprite axis based on the user input to face the player in the direction they're moving
-    private void Animate()
-    {
-
-        if (movementInput.x < 0)
-        {
-            spriteRenderer.flipX = true;
-        } else if (movementInput.x > 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-
-
-    }
-
-
-    // Gets the user input for player movement
+    // Gets the user input to update the player movement vector
     private void OnMove(InputValue inputValue)
     {
         movementInput = inputValue.Get<Vector2>();
