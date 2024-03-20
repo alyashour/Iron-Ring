@@ -36,11 +36,14 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] SpriteRenderer spriteRenderer;
 
+    // Script references
+    [SerializeField] AttackBehaviour attackBehaviour;
+
     // Holds the player input for direction
     private Vector2 movementInput;
 
     // Holds the direction the player is facing
-    private string direction;
+    private string direction = "down";
 
     // Flag for if the player is moving
     private bool isMoving;
@@ -49,7 +52,7 @@ public class PlayerAnimation : MonoBehaviour
     private int state = 0;
 
     // Flag for if the player is attacking
-    private bool isAttacking;
+    private bool isAttacking = false;
 
     // Fields for animation timings
     private float attackStartTime;
@@ -67,6 +70,10 @@ public class PlayerAnimation : MonoBehaviour
         if (!isAttacking)
         {
             GetAnimation();
+
+            // Disables the hit detection from attacks, when the player is not attacking
+            attackBehaviour.StopAttack();
+
         }
 
     }
@@ -75,7 +82,7 @@ public class PlayerAnimation : MonoBehaviour
     private void GetAnimation()
     {
         // Determines if the player is moving or not
-        if (rb.velocity.magnitude < 0.5f)
+        if (rb.velocity.magnitude < 0.25f)
         {
             isMoving = false;
         } else
@@ -170,12 +177,18 @@ public class PlayerAnimation : MonoBehaviour
             // Attack back (up)
             animator.Play("Player_Attack_B");
             state = 8;
+
+            // Sets the size and position of the collision detection for the attack
+            attackBehaviour.direction = AttackBehaviour.AttackDirection.up;
         }
         else if (direction == "down")
         {
             // Attack forward (down)
             animator.Play("Player_Attack_F");
             state = 6;
+
+            // Sets the size and position of the collision detection for the attack
+            attackBehaviour.direction = AttackBehaviour.AttackDirection.down;
         }
         else if (direction == "right")
         {
@@ -183,6 +196,9 @@ public class PlayerAnimation : MonoBehaviour
             animator.Play("Player_Attack_S");
             spriteRenderer.flipX = false;
             state = 7;
+
+            // Sets the size and position of the collision detection for the attack
+            attackBehaviour.direction = AttackBehaviour.AttackDirection.right;
         }
         else if (direction == "left")
         {
@@ -190,10 +206,18 @@ public class PlayerAnimation : MonoBehaviour
             animator.Play("Player_Attack_S");
             state = 7;
             spriteRenderer.flipX = true;
+
+            // Sets the size and position of the collision detection for the attack
+            attackBehaviour.direction = AttackBehaviour.AttackDirection.left;
         }
 
         // Plays the state animation
         animator.SetInteger("NextState", state);
+
+
+        // Sets the collision detection to the correct size and position; sets it as active
+        attackBehaviour.Attack();
+
 
     }
 
