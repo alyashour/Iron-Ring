@@ -1,3 +1,5 @@
+using System;
+using Cinemachine.Utility;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,23 +8,35 @@ namespace PongBoss
     public class ThrowController : MonoBehaviour
     {
         public float defaultSpeed = 1f;
+        public bool canThrow = true;
         public GameObject sword;
-        // Start is called before the first frame update
-        void Start()
+        Rigidbody2D rb;
+
+        private void Start()
         {
-        
+            rb = GetComponent<Rigidbody2D>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
-
+        /**
+         * Called by the character input manager when the player uses the throw keybind
+         */
         private void OnThrow(InputValue inputValue)
         {
-            Rigidbody2D rb = Instantiate(sword, this.gameObject.transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
-            rb.velocity = Vector2.up * defaultSpeed;
+            if (!canThrow) return;
+            
+            // calculate where to spawn the sword above the player using an offset
+            var playerHalfHeight = GetComponent<SpriteRenderer>().sprite.bounds.size.y / 2;
+            var swordHalfHeight = sword.GetComponent<SpriteRenderer>().sprite.bounds.size.y / 2;
+            Vector3 positionOffset = Vector3.up * (playerHalfHeight + swordHalfHeight);
+            
+            // create the sword object above the player and give it an initial velocity vector
+            Rigidbody2D swordRb = Instantiate(sword, transform.position + positionOffset, Quaternion.identity).GetComponent<Rigidbody2D>();
+            swordRb.velocity = new Vector2(rb.velocity.x, 1).normalized * defaultSpeed;
+            canThrow = false; // there should only ever be 1 thrown object
+            
+            // let the pong controller know there is a new sword on the field
+            PongController pongController = GameObject.Find("Pong").GetComponent<PongController>();
+            pongController.SetSwordRb(swordRb);
         }
     }
 }
