@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace PongBoss
@@ -20,16 +21,40 @@ namespace PongBoss
             _rb = GetComponent<Rigidbody2D>();
         }
 
+        private void BounceBack(Vector2 otherVelocity)
+        {
+            // bounce back at a higher speed
+            var vel = _rb.velocity;
+            var currentSpeed = vel.magnitude;
+            var newSpeed = currentSpeed * speedupMultiplier;
+
+            // pong velocity is clamped to the x axis
+            var direction = (otherVelocity + new Vector2(vel.x, -vel.y)).normalized;
+            var newVel = direction * newSpeed;
+
+            // assign new velocity
+            _rb.velocity = newVel;
+        }
+
         public void OnTriggerEnter2D(Collider2D other)
         {
             switch (other.gameObject.name)
             {
                 case "TopTrigger":
-                    Debug.Log("Hit the far wall");
-                    break;
                 case "BottomTrigger":
-                    Debug.Log("Hit the near wall");
+                {
+                    // update pong boss
+                    PongController pongController = GameObject.Find("Pong").GetComponent<PongController>();
+                    pongController.SetSwordRb(null);
+                
+                    // update player
+                    _player.GetComponent<ThrowController>().canThrow = true;
+                
+                    // destroy this sword object
+                    Destroy(gameObject);
+
                     break;
+                }
                 case "SceneBoundary":
                 {
                     // reverse horizontal velocity
@@ -40,32 +65,17 @@ namespace PongBoss
                 }
                 case "Pong":
                 {
-                    // bounce back at a higher speed
-                    var vel = _rb.velocity;
-                    var currentSpeed = vel.magnitude;
-                    var newSpeed = currentSpeed * speedupMultiplier;
-
-                    // pong velocity is clamped to the x axis
-                    var direction = (other.gameObject.GetComponent<Rigidbody2D>().velocity + new Vector2(vel.x, -vel.y)).normalized;
-                    var newVel = direction * newSpeed;
-
-                    // assign new velocity
-                    _rb.velocity = newVel;
+                    BounceBack(other.GetComponent<Rigidbody2D>().velocity);
                     break;
                 }
-            }
-
-            if (other.gameObject.name is "TopTrigger" or "BottomTrigger")
-            {
-                // update pong boss
-                PongController pongController = GameObject.Find("Pong").GetComponent<PongController>();
-                pongController.SetSwordRb(null);
-                
-                // update player
-                _player.GetComponent<ThrowController>().canThrow = true;
-                
-                // destroy this sword object
-                Destroy(gameObject);
+                case "Player":
+                {
+                    if (other.GetComponent<PlayerAnimation>().IsAttacking())
+                    {
+                        BounceBack(other.GetComponent<Rigidbody2D>().velocity);
+                    }
+                    break;
+                }
             }
         }
     }

@@ -58,6 +58,11 @@ public class PlayerAnimation : MonoBehaviour
     private float attackStartTime;
     private float attackDuration = 0.5f;
 
+    public bool IsAttacking()
+    {
+        return isAttacking;
+    }
+    
     private void Update()
     {
         // Resets the attacking flag after the animation has completed
