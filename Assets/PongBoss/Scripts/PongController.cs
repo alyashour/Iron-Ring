@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace PongBoss
@@ -9,15 +10,18 @@ namespace PongBoss
     
     public class PongController : MonoBehaviour
     {
+        public float breakSpeed = 10f; // the speed at which pong will break
         public float paddleAcceleration = 20f;
         public float paddleVelocity = 3f;
         public float paddleXTolerance = 0.3f;
         
-        private IPongAI _ai; // AI interface that handles logic
-        private Rigidbody2D _rb; // this object's rigid body (for ease of use)
         // these values are all to reduce frequent lookups
         private Rigidbody2D _swordRb;
         private GameObject _player;
+        private GameObject _levelManager;
+        
+        private IPongAI _ai; // AI interface that handles logic
+        private Rigidbody2D _rb; // this object's rigid body (for ease of use)
         
         
         // Start is called before the first frame update
@@ -26,6 +30,7 @@ namespace PongBoss
             _rb = GetComponent<Rigidbody2D>();
             _player = GameObject.Find("Player");
             _ai = new ShadowAI(paddleVelocity, paddleXTolerance);
+            _levelManager = GameObject.Find("LevelManager");
         }
 
         // Update is called once per frame
@@ -54,6 +59,19 @@ namespace PongBoss
         public void SetSwordRb(Rigidbody2D rb)
         {
             _swordRb = rb;
+        }
+
+        public void OnProjectileBounce(GameObject projectile)
+        {
+            Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
+
+            // get the normal component of the vector
+            float projectileNormalSpeed = projectileRb.velocity.y;
+            
+            if (Math.Abs(projectileNormalSpeed) > breakSpeed)
+            {
+                _levelManager.GetComponent<LevelController>().GameOver();
+            }
         }
     }
 }

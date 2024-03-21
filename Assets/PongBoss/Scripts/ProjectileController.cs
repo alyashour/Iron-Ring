@@ -11,6 +11,7 @@ namespace PongBoss
     public class ProjectileController : MonoBehaviour
     {
         private GameObject _player;
+        private GameObject _pong;
         private Rigidbody2D _rb;
         public float speedupMultiplier = 1.1f;
 
@@ -18,6 +19,7 @@ namespace PongBoss
         void Start()
         {
             _player = GameObject.Find("Player");
+            _pong = GameObject.Find("Pong");
             _rb = GetComponent<Rigidbody2D>();
         }
 
@@ -66,6 +68,7 @@ namespace PongBoss
                 case "Pong":
                 {
                     BounceBack(other.GetComponent<Rigidbody2D>().velocity);
+                    _pong.GetComponent<PongController>().OnProjectileBounce(gameObject);
                     break;
                 }
                 case "Player":

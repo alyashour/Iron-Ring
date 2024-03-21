@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,16 +12,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerAnimation : MonoBehaviour
 {
-
     /*
     STATES:
 
     0 - Player_Idle_F
-    1 - Player_Idle_S (flipX = true, false) 
+    1 - Player_Idle_S (flipX = true, false)
     2 - Player_Idle_B
 
     3 - Player_Walk_F
-    4 - Player_Walk_S (flipX = true, false) 
+    4 - Player_Walk_S (flipX = true, false)
     5 - Player_Walk_B
 
     6 - Player_Attack_F
@@ -28,7 +28,7 @@ public class PlayerAnimation : MonoBehaviour
     8 - Player_Attack_B
 
     9 - Player_Die
-    
+
     */
 
     // Component references
@@ -43,7 +43,15 @@ public class PlayerAnimation : MonoBehaviour
     private Vector2 movementInput;
 
     // Holds the direction the player is facing
-    private string direction = "down";
+    private enum Direction
+    {
+        Up,
+        Down,
+        Right,
+        Left
+    }
+
+    private Direction direction = Direction.Down;
 
     // Flag for if the player is moving
     private bool isMoving;
@@ -55,18 +63,18 @@ public class PlayerAnimation : MonoBehaviour
     private bool isAttacking = false;
 
     // Fields for animation timings
-    private float attackStartTime;
+    private float combatStartTime;
     private float attackDuration = 0.5f;
 
     public bool IsAttacking()
     {
         return isAttacking;
     }
-    
+
     private void Update()
     {
         // Resets the attacking flag after the animation has completed
-        if (Time.time - attackStartTime > attackDuration)
+        if (Time.time - combatStartTime > attackDuration)
         {
             isAttacking = false;
         }
@@ -78,9 +86,7 @@ public class PlayerAnimation : MonoBehaviour
 
             // Disables the hit detection from attacks, when the player is not attacking
             attackBehaviour.StopAttack();
-
         }
-
     }
 
     // Plays the correct animation based on a calculated state value (only called when the player is not attacking)
@@ -90,7 +96,8 @@ public class PlayerAnimation : MonoBehaviour
         if (rb.velocity.magnitude < 0.25f)
         {
             isMoving = false;
-        } else
+        }
+        else
         {
             isMoving = true;
         }
@@ -100,120 +107,103 @@ public class PlayerAnimation : MonoBehaviour
         {
             if (movementInput.x == 1)
             {
-                direction = "right";
-            } else if (movementInput.x == -1)
-            {
-                direction = "left";
+                direction = Direction.Right;
             }
-        } else if (Mathf.Abs(movementInput.x) < Mathf.Abs(movementInput.y))
+            else if (movementInput.x == -1)
+            {
+                direction = Direction.Left;
+            }
+        }
+        else if (Mathf.Abs(movementInput.x) < Mathf.Abs(movementInput.y))
         {
             if (movementInput.y == 1)
             {
-                direction = "up";
+                direction = Direction.Up;
             }
             else if (movementInput.y == -1)
             {
-                direction = "down";
-            } 
+                direction = Direction.Down;
+            }
         }
 
         // Determines the proper animation state based on if the player is moving, and what direction they're facing
         if (!isMoving)
         {
             // Select idle animation based on direction
-            if (direction == "up")
+            switch (direction)
             {
-                // Idle facing back (up)
-                state = 2;
-            } else  if (direction == "down")
-            {
-                // Idle facing forward (down)
-                state = 0;
-            } else if (direction == "right")
-            {
-                // Idle facing to the side (right)
-                state = 1;
-                spriteRenderer.flipX = false;
-            } else if (direction == "left")
-            {
-                // Idle facing to the side (left)
-                state = 1;
-                spriteRenderer.flipX = true;
+                case Direction.Up:
+                    state = 2;
+                    break;
+                case Direction.Down:
+                    state = 0;
+                    break;
+                case Direction.Right:
+                    state = 1;
+                    spriteRenderer.flipX = false;
+                    break;
+                case Direction.Left:
+                    state = 1;
+                    spriteRenderer.flipX = true;
+                    break;
             }
-
-        } else
+        }
+        else
         {
-            // Select walk animation
-            if (direction == "up")
+            switch (direction)
             {
-                // Walk back (up)
-                state = 5;
-            }
-            else if (direction == "down")
-            {
-                // Walk forward (down)
-                state = 3;
-            }
-            else if (direction == "right")
-            {
-                // Walk to the side (right)
-                state = 4;
-                spriteRenderer.flipX = false;
-            }
-            else if (direction == "left")
-            {
-                // Walk to the side (left)
-                state = 4;
-                spriteRenderer.flipX = true;
+                case Direction.Up:
+                    state = 5;
+                    break;
+                case Direction.Down:
+                    state = 3;
+                    break;
+                case Direction.Right:
+                    state = 4;
+                    spriteRenderer.flipX = false;
+                    break;
+                case Direction.Left:
+                    state = 4;
+                    spriteRenderer.flipX = true;
+                    break;
             }
         }
 
         // Sets the animator value based on the updated state selection
         animator.SetInteger("NextState", state);
-
     }
 
     // Plays the correct attack animation based on the direction value when called
     private void PlayAttackAnimation()
     {
-        // Select attack animation
-        if (direction == "up")
+        switch (direction)
         {
-            // Attack back (up)
-            animator.Play("Player_Attack_B");
-            state = 8;
+            case Direction.Up:
+                animator.Play("Player_Attack_B");
+                state = 8;
 
-            // Sets the size and position of the collision detection for the attack
-            attackBehaviour.direction = AttackBehaviour.AttackDirection.up;
-        }
-        else if (direction == "down")
-        {
-            // Attack forward (down)
-            animator.Play("Player_Attack_F");
-            state = 6;
+                attackBehaviour.direction = AttackBehaviour.AttackDirection.up;
+                break;
+            case Direction.Down:
+                animator.Play("Player_Attack_F");
+                state = 6;
 
-            // Sets the size and position of the collision detection for the attack
-            attackBehaviour.direction = AttackBehaviour.AttackDirection.down;
-        }
-        else if (direction == "right")
-        {
-            // Attack to the side (right)
-            animator.Play("Player_Attack_S");
-            spriteRenderer.flipX = false;
-            state = 7;
+                attackBehaviour.direction = AttackBehaviour.AttackDirection.down;
+                break;
+            case Direction.Left:
+                animator.Play("Player_Attack_S");
+                state = 7;
+                spriteRenderer.flipX = true;
 
-            // Sets the size and position of the collision detection for the attack
-            attackBehaviour.direction = AttackBehaviour.AttackDirection.right;
-        }
-        else if (direction == "left")
-        {
-            // Attack to the side (left)
-            animator.Play("Player_Attack_S");
-            state = 7;
-            spriteRenderer.flipX = true;
+                attackBehaviour.direction = AttackBehaviour.AttackDirection.left;
+                break;
+            case Direction.Right:
+                animator.Play("Player_Attack_S");
+                state = 7;
+                spriteRenderer.flipX = false;
 
-            // Sets the size and position of the collision detection for the attack
-            attackBehaviour.direction = AttackBehaviour.AttackDirection.left;
+                attackBehaviour.direction = AttackBehaviour.AttackDirection.right;
+                break;
         }
 
         // Plays the state animation
@@ -222,8 +212,6 @@ public class PlayerAnimation : MonoBehaviour
 
         // Sets the collision detection to the correct size and position; sets it as active
         attackBehaviour.Attack();
-
-
     }
 
     // Gets the user input for player movement
@@ -236,17 +224,17 @@ public class PlayerAnimation : MonoBehaviour
     private void OnFire(InputValue inputValue)
     {
         // Stops the player from attacking when they already are attacking
-        if (!isAttacking)
+        if (isAttacking)
         {
-            // Updates the time the attack animation started
-            attackStartTime = Time.time;
-            // Sets the attacking flag
-            isAttacking = true;
-
-            // Determines and plays the attack animation
-            PlayAttackAnimation();
+            return;
         }
 
-    }
+        // Updates the time the attack animation started
+        combatStartTime = Time.time;
+        // Sets the appropriate flags
+        isAttacking = true;
 
+        // Determines and plays the attack animation
+        PlayAttackAnimation();
+    }
 }
