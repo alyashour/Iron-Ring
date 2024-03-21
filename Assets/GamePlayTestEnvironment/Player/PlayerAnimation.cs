@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 /*
     Intended for use as a component on the player gameobject, determines and sets the proper animations
     Author: Aiden

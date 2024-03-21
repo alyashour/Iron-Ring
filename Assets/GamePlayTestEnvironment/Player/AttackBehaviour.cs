@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
     Sets the position of the box collider, and sets it to be active only when the player is attacking
-    Author - Aiden
+    Author: Aiden
 */
 
 public class AttackBehaviour : MonoBehaviour

@@ -22,8 +22,6 @@ public class PlayerMovement : MonoBehaviour
     // Place holder struct ref used in smooth dampening
     private Vector2 movementInputSmoothedVelocity;
 
-    // The player speed
-    [SerializeField] float speed = 1.75f;
     // The amount of time it takes to smooth the movement (basically how slippy the movement feels)
     private float smoothTime = 0.05f;
 
@@ -31,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     {
         // Moves the player
         Move();
-
     }
 
 
@@ -40,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Calculates the new smoothed input value based on the current value and the target value
         smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref movementInputSmoothedVelocity, smoothTime);
-        rb.velocity = smoothedMovementInput * speed;
+        rb.velocity = smoothedMovementInput * PlayerAttributes.PlayerSpeed;
     }
 
     // Gets the user input to update the player movement vector
