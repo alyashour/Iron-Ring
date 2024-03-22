@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -92,14 +93,21 @@ public class AttackBehaviour : MonoBehaviour
     }
 
     // Called when the attack collides with an object
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // Checks the collision is with an attackable object
-        if (collider.tag == "Attackable")
+        if (other.CompareTag("Attackable"))
         {
-            // Calls the OnHit method from the collided attackable object, passes the player position
-            collider.SendMessage("OnHit", transform.parent.position);
-            StopAttack();
+            try
+            {
+                // Calls the OnHit method from the collided attackable object, passes the player position
+                other.SendMessage("OnHit", transform.parent.position);
+                StopAttack();
+            }
+            catch (NullReferenceException e)
+            {
+                // ignore the error
+            }
         }
     }
 }

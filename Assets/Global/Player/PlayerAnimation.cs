@@ -212,7 +212,7 @@ public class PlayerAnimation : MonoBehaviour
 
 
         // Sets the collision detection to the correct size and position; sets it as active
-        attackBehaviour.Attack();
+        // attackBehaviour.Attack();
     }
 
     // Gets the user input for player movement
