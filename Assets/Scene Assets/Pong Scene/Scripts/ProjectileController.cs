@@ -1,3 +1,4 @@
+using System.Data.Common;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -73,7 +74,10 @@ namespace PongBoss
                 }
                 case "Player":
                 {
-                    if (other.GetComponent<PlayerAnimation>().IsAttacking())
+                    var animatorStateInfo = other.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+                    if (animatorStateInfo.IsName("Player_Attack_B") || 
+                        animatorStateInfo.IsName("Player_Attack_F") || 
+                        animatorStateInfo.IsName("Player_Attack_S"))
                     {
                         BounceBack(other.GetComponent<Rigidbody2D>().velocity);
                     }

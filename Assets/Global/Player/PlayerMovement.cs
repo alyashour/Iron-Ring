@@ -27,21 +27,42 @@ namespace Global.Player
         // The amount of time it takes to smooth the movement (basically how slippy the movement feels)
         private const float SmoothTime = 0.05f;
 
+        private float _lastAttackTime = 0f;
+        // todo: make this value influence the animation speed!
+        [SerializeField] private float attackCooldown = 1f; // in seconds
+        private bool _isAttacking; // do not use, use the IsAttacking property instead
+
+        public bool IsAttacking
+        {
+            get => _isAttacking;
+
+            set
+            {
+                _isAttacking = value;
+                _animator.SetBool("isAttacking", value);
+                if (value)
+                {
+                    _animator.SetTrigger("Attack");
+                    _lastAttackTime = Time.time;
+                }
+            }
+        }
+
         private void Start()
         {
             _animator = gameObject.GetComponent<Animator>();
             _rb = gameObject.GetComponent<Rigidbody2D>();
-        }
-
-        private void Update()
-        {
-            
         }
         
         private void FixedUpdate()
         {
             // Moves the player
             Move();
+
+            if (Time.time - _lastAttackTime > attackCooldown)
+            {
+                IsAttacking = false;
+            }
         }
 
 
@@ -91,7 +112,16 @@ namespace Global.Player
 
         private void OnFire(InputValue inputValue)
         {
-            _animator.SetTrigger("Attack");
+            // if already attacking
+            if (IsAttacking)
+            {
+                // do nothing
+            }
+            else
+            {
+                // not already attacking
+                IsAttacking = true;
+            }
         }
     }
 }
