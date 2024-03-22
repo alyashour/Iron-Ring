@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,27 +23,31 @@ public class AttackBehaviour : MonoBehaviour
     private Vector2 upDownSize = new Vector2(0.275f, 0.17f);
 
     // Defines a enum to hold the directions possible, defines a reference to it
-    public enum AttackDirection
+    public enum PlayerDirection
     {
-        left, right, up, down
+        Left,
+        Right,
+        Up,
+        Down
     }
-    public AttackDirection direction;
+
+    public PlayerDirection direction;
 
     // Determines the appropriate attack direction method to call
     public void Attack()
     {
-        switch(direction)
+        switch (direction)
         {
-            case AttackDirection.left:
-                AttackLeft(); 
+            case PlayerDirection.Left:
+                AttackLeft();
                 break;
-            case AttackDirection.right:
-                AttackRight(); 
+            case PlayerDirection.Right:
+                AttackRight();
                 break;
-            case AttackDirection.up:
+            case PlayerDirection.Up:
                 AttackUp();
                 break;
-            case AttackDirection.down:
+            case PlayerDirection.Down:
                 AttackDown();
                 break;
         }
@@ -56,13 +61,15 @@ public class AttackBehaviour : MonoBehaviour
         swordCollider.offset = rightPosition;
         swordCollider.size = sideSize;
     }
-    private void AttackLeft() 
+
+    private void AttackLeft()
     {
         swordCollider.enabled = true;
 
         swordCollider.offset = leftPosition;
         swordCollider.size = sideSize;
     }
+
     private void AttackUp()
     {
         swordCollider.enabled = true;
@@ -70,6 +77,7 @@ public class AttackBehaviour : MonoBehaviour
         swordCollider.offset = upPosition;
         swordCollider.size = upDownSize;
     }
+
     private void AttackDown()
     {
         swordCollider.enabled = true;
@@ -85,16 +93,21 @@ public class AttackBehaviour : MonoBehaviour
     }
 
     // Called when the attack collides with an object
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // Checks the collision is with an attackable object
-        if (collision.tag == "Attackable")
+        if (other.CompareTag("Attackable"))
         {
-            // Calls the OnHit method from the collided attackable object, passes the player position
-            collision.SendMessage("OnHit", transform.parent.position);
-            StopAttack();
+            try
+            {
+                // Calls the OnHit method from the collided attackable object, passes the player position
+                other.SendMessage("OnHit", transform.parent.position);
+                StopAttack();
+            }
+            catch (NullReferenceException e)
+            {
+                // ignore the error
+            }
         }
-        
     }
-
 }
