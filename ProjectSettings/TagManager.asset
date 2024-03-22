@@ -13,11 +13,11 @@ TagManager:
   - MiniGolems
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Pacman
+  - Ghost
+  - Pellet
+  - Obstacle
+  - Node
   - 
   - 
   - 
