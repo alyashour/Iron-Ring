@@ -183,27 +183,27 @@ public class PlayerAnimation : MonoBehaviour
                 animator.Play("Player_Attack_B");
                 state = 8;
 
-                attackBehaviour.direction = AttackBehaviour.AttackDirection.up;
+                attackBehaviour.direction = AttackBehaviour.PlayerDirection.Up;
                 break;
             case Direction.Down:
                 animator.Play("Player_Attack_F");
                 state = 6;
 
-                attackBehaviour.direction = AttackBehaviour.AttackDirection.down;
+                attackBehaviour.direction = AttackBehaviour.PlayerDirection.Down;
                 break;
             case Direction.Left:
                 animator.Play("Player_Attack_S");
                 state = 7;
                 spriteRenderer.flipX = true;
 
-                attackBehaviour.direction = AttackBehaviour.AttackDirection.left;
+                attackBehaviour.direction = AttackBehaviour.PlayerDirection.Left;
                 break;
             case Direction.Right:
                 animator.Play("Player_Attack_S");
                 state = 7;
                 spriteRenderer.flipX = false;
 
-                attackBehaviour.direction = AttackBehaviour.AttackDirection.right;
+                attackBehaviour.direction = AttackBehaviour.PlayerDirection.Right;
                 break;
         }
 

@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 /*
     Intended for use as a component on the player game object
-    Author: Aiden
+    Author: Aiden, Aly
 */
 
 namespace Global.Player
@@ -28,8 +28,11 @@ namespace Global.Player
         private const float SmoothTime = 0.05f;
 
         private float _lastAttackTime = 0f;
+
+        public AttackBehaviour.PlayerDirection playerDirection;
+        
         // todo: make this value influence the animation speed!
-        [SerializeField] private float attackCooldown = 1f; // in seconds
+        [SerializeField] private float attackCooldown = 0.3f; // in seconds
         private bool _isAttacking; // do not use, use the IsAttacking property instead
 
         public bool IsAttacking
@@ -65,7 +68,17 @@ namespace Global.Player
             }
         }
 
+        /**
+         * Returns the component with the highest absolute magnitude.
+         */
+        public char MaxComponent(Vector2 vec)
+        {
+            var x = Mathf.Abs(vec.x);
+            var y = Mathf.Abs(vec.y);
 
+            return x > y ? 'x' : 'y';
+        }
+        
         // Applies the player movement, based on the user input
         private void Move()
         {
@@ -85,6 +98,20 @@ namespace Global.Player
             // update animator
             _animator.SetFloat("hSpeed", _rb.velocity.x);
             _animator.SetFloat("vSpeed", _rb.velocity.y);
+            
+            // update the direction
+            var maxAxis = MaxComponent(_rb.velocity);
+
+            if (maxAxis == 'x')
+            {
+                playerDirection = _rb.velocity.x > 0 ? // if value is positive
+                    AttackBehaviour.PlayerDirection.Right : AttackBehaviour.PlayerDirection.Left; // right else left
+            }
+            else // maxAxis == 'y'
+            {
+                playerDirection = _rb.velocity.y > 0 ? // if value is positive,
+                    AttackBehaviour.PlayerDirection.Up : AttackBehaviour.PlayerDirection.Down; // up else down
+            }
         }
 
         // Gets the user input to update the player movement vector
