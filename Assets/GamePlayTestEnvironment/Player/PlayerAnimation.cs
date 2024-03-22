@@ -12,6 +12,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerAnimation : MonoBehaviour
 {
+
     /*
     STATES:
 

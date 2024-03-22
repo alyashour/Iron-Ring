@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - SceneBoundary
+  - Attackable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - MiniGolems
   - Water
   - UI
   - 
@@ -41,4 +42,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: MiniGolems
+    uniqueID: 2747718391
     locked: 0
