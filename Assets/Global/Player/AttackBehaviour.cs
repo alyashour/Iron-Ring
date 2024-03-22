@@ -104,7 +104,7 @@ public class AttackBehaviour : MonoBehaviour
                 other.SendMessage("OnHit", transform.parent.position);
                 StopAttack();
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException _)
             {
                 // ignore the error
             }
