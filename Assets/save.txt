@@ -1,0 +1,1 @@
+{"gameState":0,"scene":"","level":0,"xp":0,"playerHealth":100.0,"playerSpeed":1.75,"playerDefence":0.0,"playerDamage":10.0}
