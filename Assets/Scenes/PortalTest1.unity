@@ -578,60 +578,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261698788}
   m_CullTransparentMesh: 1
---- !u!1 &1760573263 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5578985901375440752, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
-  m_PrefabInstance: {fileID: 1948999354315215615}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1760573265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760573263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a2f16fb6fe840948f180902d4d7032, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destinationSceneName: PortalTest2
-  spawnPoint: {x: 0, y: 0}
---- !u!70 &1760573266
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760573263}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.5205, y: -0.035093196}
-  m_Size: {x: 1.3772513, y: 0.8684579}
-  m_Direction: 1
 --- !u!1001 &2106502792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -891,16 +837,14 @@ PrefabInstance:
       propertyPath: destinationSceneName
       value: PortalTest2
       objectReference: {fileID: 0}
+    - target: {fileID: 7432878245813900326, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
+      propertyPath: destinationPortalName
+      value: Portal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5578985901375440752, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1760573266}
-    - targetCorrespondingSourceObject: {fileID: 5578985901375440752, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1760573265}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
