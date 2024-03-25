@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Attackable
+  - Boss
   - SceneBoundary
   - Attackable
   layers:
