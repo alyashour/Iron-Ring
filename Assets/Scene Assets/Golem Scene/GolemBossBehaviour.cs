@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/* TODO by March 26
+ * figure out dealing damage to player
+ * figure out knockback user by chance
+ * figure out lighting strike on user by chance
+ * figure out golem animation
+ */
+
 public class GolemBossBehaviour : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
@@ -23,6 +31,8 @@ public class GolemBossBehaviour : MonoBehaviour
 
     // reference to prefab
     [SerializeField] GameObject miniGolemPrefab;
+    [SerializeField] GameObject portalPrefab;
+    [SerializeField] GameObject pathwayRocks;
 
 
     private void Start()
@@ -54,6 +64,8 @@ public class GolemBossBehaviour : MonoBehaviour
             hit = true;
             DestroyMiniGolems();
             Destroy(gameObject, 0.25f);
+            // clear path to portal
+            Destroy(pathwayRocks, 1);
         }
 
         // Check for health thresholds for splitting
