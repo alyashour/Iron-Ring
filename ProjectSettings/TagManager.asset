@@ -6,18 +6,20 @@ TagManager:
   tags:
   - Attackable
   - Boss
+  - SceneBoundary
+  - Attackable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - MiniGolems
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Pacman
+  - Ghost
+  - Pellet
+  - Obstacle
+  - Node
   - 
   - 
   - 
@@ -42,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: MiniGolems
+    uniqueID: 2747718391
     locked: 0
