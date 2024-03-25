@@ -2,23 +2,51 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/**
+ * Portals
+ * Author: Aly
+ */
+
 public class PortalScript : MonoBehaviour
 {
     [SerializeField] private string destinationSceneName;
-    [SerializeField] private Vector2 spawnPoint = Vector2.zero; // the location that the player will spawn in in the new scene
+    [SerializeField] private string destinationPortalName;
+    [SerializeField] private float teleportDelayTime = 2f;
+    [SerializeField] private bool teleportAcrossScenes = true;
     private bool _canTeleport = true;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private float _timeOfPortalEnter;
+    
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (_canTeleport && collision.name == "Player") // Adjust the tag based on what you want to teleport
+        float timeElapsed = Time.time - _timeOfPortalEnter;
+        if (_canTeleport && timeElapsed > teleportDelayTime && other.name == "Player")
         {
             _canTeleport = false;
-            Teleport(collision.gameObject);
-            Invoke("ResetTeleportFlag", 0.5f); // Delay to prevent immediate re-teleportation
+            
+            // teleport the player
+            if (teleportAcrossScenes) TeleportAcrossScenes(other.gameObject);
+            else TeleportInScene(other.gameObject);
+            
+            // call a delayed async func to prevent immediate re-teleportation
+            Invoke(nameof(ResetTeleportFlag), 1.0f); // Delay to prevent immediate re-teleportation
         }
     }
 
-    private void Teleport(GameObject obj)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (_canTeleport && other.name == "Player")
+        {
+            _timeOfPortalEnter = Time.time;
+        }
+    }
+
+    private void TeleportInScene(GameObject obj)
+    {
+        var otherPortal = GameObject.Find(destinationPortalName);
+        obj.transform.position = otherPortal.transform.position;
+    }
+
+    private void TeleportAcrossScenes(GameObject obj)
     {
         // Serialize object state here (position, rotation, etc.)
         SaveObjectState(obj);
@@ -31,7 +59,6 @@ public class PortalScript : MonoBehaviour
     {
         // Implement object state serialization here
         // Store position, rotation, and any other necessary data
-        
     }
 
     private IEnumerator LoadSceneAsync(string sceneName, GameObject obj)
@@ -48,6 +75,10 @@ public class PortalScript : MonoBehaviour
         // Activate the newly loaded scene
         Scene loadedScene = SceneManager.GetSceneByName(sceneName);
         SceneManager.SetActiveScene(loadedScene);
+        
+        // move the player there
+        GameObject otherPortal = GameObject.Find(destinationPortalName);
+        obj.transform.position = otherPortal.transform.position;
     }
 
     private void RestoreObjectState(GameObject obj)

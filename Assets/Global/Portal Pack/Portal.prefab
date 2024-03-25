@@ -153,7 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a2f16fb6fe840948f180902d4d7032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetPortal: {fileID: 0}
+  destinationSceneName: 
+  destinationPortalName: 
+  teleportDelayTime: 2
+  teleportAcrossScenes: 1
 --- !u!70 &3469356889303267041
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
