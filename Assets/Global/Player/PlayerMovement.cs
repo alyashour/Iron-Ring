@@ -13,6 +13,7 @@ namespace Global.Player
         // Component references
         private Animator _animator;
         private Rigidbody2D _rb;
+        private AttackBehaviour _attackBehaviour;
 
         // Store the current user input, and the current smoothed input
         private Vector2 _movementInput;
@@ -30,6 +31,7 @@ namespace Global.Player
         private float _lastAttackTime = 0f;
 
         public AttackBehaviour.PlayerDirection playerDirection;
+        
         
         // todo: make this value influence the animation speed!
         [SerializeField] private float attackCooldown = 0.3f; // in seconds
@@ -55,6 +57,7 @@ namespace Global.Player
         {
             _animator = gameObject.GetComponent<Animator>();
             _rb = gameObject.GetComponent<Rigidbody2D>();
+            _attackBehaviour = GameObject.Find("SwordHitbox").GetComponent<AttackBehaviour>();
         }
         
         private void FixedUpdate()
@@ -65,6 +68,7 @@ namespace Global.Player
             if (Time.time - _lastAttackTime > attackCooldown)
             {
                 IsAttacking = false;
+                _attackBehaviour.StopAttack();
             }
         }
 
@@ -73,10 +77,19 @@ namespace Global.Player
          */
         public char MaxComponent(Vector2 vec)
         {
-            var x = Mathf.Abs(vec.x);
-            var y = Mathf.Abs(vec.y);
-
-            return x > y ? 'x' : 'y';
+            
+            if (Mathf.Abs(vec.x) == Mathf.Abs(vec.y))
+            {
+                return 'n'; // n for neither since they're equal
+            }
+            else if (Mathf.Abs(vec.x) > Mathf.Abs(vec.y))
+            {
+                return 'x';
+            }
+            else // it is greater in y
+            {
+                return 'y';
+            }
         }
         
         // Applies the player movement, based on the user input
@@ -107,11 +120,11 @@ namespace Global.Player
                 playerDirection = _rb.velocity.x > 0 ? // if value is positive
                     AttackBehaviour.PlayerDirection.Right : AttackBehaviour.PlayerDirection.Left; // right else left
             }
-            else // maxAxis == 'y'
+            else if (maxAxis == 'y')
             {
                 playerDirection = _rb.velocity.y > 0 ? // if value is positive,
                     AttackBehaviour.PlayerDirection.Up : AttackBehaviour.PlayerDirection.Down; // up else down
-            }
+            } // else dont do anything
         }
 
         // Gets the user input to update the player movement vector
@@ -148,6 +161,9 @@ namespace Global.Player
             {
                 // not already attacking
                 IsAttacking = true;
+                _attackBehaviour.direction = playerDirection;
+                _attackBehaviour.Attack();
+              
             }
         }
     }
