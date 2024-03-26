@@ -48,3 +48,6 @@ TagManager:
   - name: MiniGolems
     uniqueID: 2747718391
     locked: 0
+  - name: Player
+    uniqueID: 1281077859
+    locked: 0
