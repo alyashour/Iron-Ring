@@ -1,3 +1,4 @@
+using Global.Player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +9,6 @@ using UnityEngine;
  * figure out dealing damage to player
  * figure out knockback user by chance
  * figure out lighting strike on user by chance
- * figure out golem animation
  */
 
 public class GolemBossBehaviour : MonoBehaviour
@@ -33,7 +33,6 @@ public class GolemBossBehaviour : MonoBehaviour
     [SerializeField] GameObject miniGolemPrefab;
     [SerializeField] GameObject portalPrefab;
     [SerializeField] GameObject pathwayRocks;
-
 
     private void Start()
     {
@@ -73,7 +72,6 @@ public class GolemBossBehaviour : MonoBehaviour
         
         if (!split50 && healthPercentage <= 0.5f)
         {
-            Debug.Log("split");
             Split();
             split50 = true;
         }
@@ -103,7 +101,7 @@ public class GolemBossBehaviour : MonoBehaviour
     {
         hit = true;
         health -= 0.34f;
-       
+
         if (healthBarInstance == null)
         {
             Vector3 healthBarPosition = new Vector3(0, 0.1f, -0.1f);

@@ -15689,6 +15689,7 @@ MonoBehaviour:
   miniGolemPrefab: {fileID: 6196903956976431195, guid: ea3c99f880b31934fae571518cef5094, type: 3}
   portalPrefab: {fileID: 5578985901375440752, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
   pathwayRocks: {fileID: 25849803}
+  knockbackForce: 500
 --- !u!212 &1426996144
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15730,7 +15731,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b0b8401f46f797c4ea36247a462fedd0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ecb3b183f0adb5d4c872b513399f3cc6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -15750,7 +15751,7 @@ Transform:
   m_GameObject: {fileID: 1426996142}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.008, y: 0.674, z: 0}
+  m_LocalPosition: {x: 0.015, y: 0.834, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15792,14 +15793,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.4, y: 0.64}
   m_EdgeRadius: 0
 --- !u!50 &1426996147
 Rigidbody2D:
