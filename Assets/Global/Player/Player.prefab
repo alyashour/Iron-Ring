@@ -107,8 +107,7 @@ GameObject:
   - component: {fileID: 1682141117773207601}
   - component: {fileID: 4715352907816923321}
   - component: {fileID: 3456094668169969235}
-  - component: {fileID: 1930288994072715954}
-  - component: {fileID: 6971904767623274241}
+  - component: {fileID: -1634102925649992798}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -321,8 +320,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.75
   playerDirection: 0
+  attackBehaviour: {fileID: 0}
   attackCooldown: 0.3
---- !u!114 &1930288994072715954
+--- !u!114 &-1634102925649992798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -331,20 +331,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6923967991901825277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6be46b3d418b4a58968cb1fb40ecf12, type: 3}
+  m_Script: {fileID: 11500000, guid: 34822e6b5802bdc46b6d1d6d4b835c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6971904767623274241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6923967991901825277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0efdbe6f4391dc74cb2389ea678d9367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swordCollider: {fileID: 917116911260379888}
-  direction: 0
