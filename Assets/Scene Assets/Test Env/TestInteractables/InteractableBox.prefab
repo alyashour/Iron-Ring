@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5080514860466490292}
   - component: {fileID: 1256457434293414867}
-  - component: {fileID: 7841911617819445332}
   - component: {fileID: 1947841387901523053}
   - component: {fileID: 6394077312344756635}
+  - component: {fileID: 5805278133210357372}
   m_Layer: 0
   m_Name: InteractableBox
   m_TagString: Attackable
@@ -87,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7841911617819445332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8839631271750775262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3e6a95fcca44094195b830ff76d9e20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 6394077312344756635}
 --- !u!61 &1947841387901523053
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,3 +159,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5805278133210357372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8839631271750775262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2da2d0cc8eb1394cb1792724848a073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 6394077312344756635}
+  enemyKnockBack: 10

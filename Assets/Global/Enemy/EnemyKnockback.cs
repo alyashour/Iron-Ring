@@ -9,7 +9,7 @@ public class EnemyKnockback : MonoBehaviour
 {
     // Component references
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] GameObject player;
+    private GameObject _player;
 
     // The amount of knockback to provide
     [SerializeField] float enemyKnockBack = 10f;
@@ -17,6 +17,11 @@ public class EnemyKnockback : MonoBehaviour
     // Hit flag fields
     private bool _isBeingHit = false;
     private float _hitTimeStamp;
+
+    private void Start()
+    {
+        _player = GameObject.Find("Player");
+    }
 
     private void Update()
     {
@@ -38,7 +43,7 @@ public class EnemyKnockback : MonoBehaviour
 
     private void GetKnockback()
     {
-        Vector3 dir = player.transform.position - transform.position;
+        Vector3 dir = _player.transform.position - transform.position;
         rb.velocity = -dir.normalized * enemyKnockBack;
     }
 }
