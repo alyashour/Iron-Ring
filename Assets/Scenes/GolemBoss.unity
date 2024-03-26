@@ -15689,7 +15689,6 @@ MonoBehaviour:
   miniGolemPrefab: {fileID: 6196903956976431195, guid: ea3c99f880b31934fae571518cef5094, type: 3}
   portalPrefab: {fileID: 5578985901375440752, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
   pathwayRocks: {fileID: 25849803}
-  knockbackForce: 500
 --- !u!212 &1426996144
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15772,7 +15771,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -17549,7 +17548,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5578985901375440752, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
       propertyPath: m_Name
-      value: Portal
+      value: GolemBossPortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432878245813900326, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
+      propertyPath: destinationSceneName
+      value: Village
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432878245813900326, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
+      propertyPath: destinationPortalName
+      value: VillagePortal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
