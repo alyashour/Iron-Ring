@@ -12,6 +12,7 @@ public class PlayerAttributes : MonoBehaviour
     public static float PlayerSpeed { get; set; }
     public static float PlayerDefence { get; set; }
     public static float PlayerDamage { get; set; }
+    public static float PlayerKnockback { get; set; }
 
     // Level related attributes
     public static int PlayerLevel { get; set; }
@@ -30,6 +31,8 @@ public class PlayerAttributes : MonoBehaviour
         PlayerSpeed = 1.75f;
         PlayerDefence = 0;
         PlayerDamage = 10;
+
+        PlayerKnockback = 10;
 
         PlayerLevel = 0;
         PlayerXP = 0;

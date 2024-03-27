@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4222365529915888686}
   - component: {fileID: 8028359339530524009}
-  - component: {fileID: 9066940372994103627}
   - component: {fileID: 4580995674598866573}
   - component: {fileID: 2479568674938571733}
+  - component: {fileID: 7792482587483741771}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Attackable
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9066940372994103627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2700772345722593886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a066993962fd643ab074e171795bbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 4580995674598866573}
-  speed: 0.25
-  health: 1
-  healthBarPrefab: {fileID: 3129416824600834654, guid: 4e98d9c34bf389a41b079b4ce298aae1, type: 3}
 --- !u!50 &4580995674598866573
 Rigidbody2D:
   serializedVersion: 4
@@ -175,3 +159,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.12}
   m_EdgeRadius: 0
+--- !u!114 &7792482587483741771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2700772345722593886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e42bbe79fed143f184daf243e12a8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 4580995674598866573}
+  enemyHealthBarPrefab: {fileID: 3129416824600834654, guid: 4fd74c390f88849f19cca7702741e2e8, type: 3}
+  enemyDamage: 10
