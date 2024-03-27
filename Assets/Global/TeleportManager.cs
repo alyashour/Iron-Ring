@@ -4,6 +4,15 @@ using UnityEngine.SceneManagement;
 
 namespace Global
 {
+    /**
+     * Teleport manager class.
+     * This handles all player teleportation across and within scenes.
+     * DO NOT use this or instantiate this directly, instead it should be a reference in all objects that teleport the player.
+     * I.e., doors, portals, etc.
+     * Please see DoorBehaviour.cs or PortalScript.cs for an example of how to use.
+     *
+     * Author: Aly
+     */
     public class TeleportManager : MonoBehaviour
     {
         private class PlayerState
