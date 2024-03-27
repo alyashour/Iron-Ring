@@ -4,12 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Attackable
   - Boss
   - SceneBoundary
   - Attackable
   - Ladder
   - Platform
+  - Enemy
   layers:
   - Default
   - TransparentFX

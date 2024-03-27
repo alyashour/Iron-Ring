@@ -1,67 +1,101 @@
+using Global.Player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/* TODO by March 26
+ * figure out dealing damage to player
+ * figure out knockback user by chance
+ * figure out lighting strike on user by chance
+ */
+
 public class GolemBossBehaviour : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
-    private GameObject player;
-
-    [SerializeField] float speed = 0.25f;
-
-    private bool hit = false;
     private bool split50 = false;
     private bool split25 = false;
     private bool split10 = false;
 
-    public float health = 20;
-    private float maxHealth;
-
-    [SerializeField] GameObject healthBarPrefab;
-    private GameObject healthBarInstance;
-
     // reference to prefab
     [SerializeField] GameObject miniGolemPrefab;
+    [SerializeField] GameObject portalPrefab;
+    [SerializeField] GameObject pathwayRocks;
 
+    private float maxHealth;
 
-    private void Start()
+    // Component, prefab, and game object references
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] GameObject enemyHealthBarPrefab;
+    public GameObject player;
+
+    // Enemy attributes
+    public float enemyHealth = 100f;
+    public float enemyDamage = 10f;
+    public float enemySpeed = 2f;
+    public float enemyKnockBack = 10f;
+
+    // Hit flag fields
+    private bool isBeingHit = false;
+    private float hitTimeStamp;
+
+    // Flag for if the enemy is alive
+    private bool isAlive = true;
+
+    // Reference to the health bar beloning to this enemy
+    private GameObject healthBarInstance;
+    private Transform healthBar;
+
+    // reference to lightning bolt prefab
+    public GameObject lightningInstance;
+
+    public void Start()
     {
+        // Assigns the player reference
         player = GameObject.Find("Player");
-        maxHealth = health;
+        maxHealth = enemyHealth;
     }
 
     public void Update()
     {
-        if (!hit)
+        if (isAlive)
         {
-            MoveToPlayer();
+            // Moves toward the player if the enemy is not being hit currently
+            if (!isBeingHit)
+            {
+                MoveToPlayer();
+            }
+            else
+            {
+                // Resets the isBeingHit flag if the time or velocity reach certain values
+                if (Time.time - hitTimeStamp > 1f || rb.velocity.magnitude < 0.25f)
+                {
+                    isBeingHit = false;
+                }
+            }
+
+            // Updates the health bar size based on the health value
+            if (healthBarInstance != null)
+            {
+                float clampHealth = Mathf.Clamp(enemyHealth/500, 0, 500);
+                healthBar.localScale = new Vector3(clampHealth , 1, 1);
+            }
+
+            // Stops enemy behaviour and destroys the enemy game object if the health falls below 0
+            if (enemyHealth <= 0)
+            {
+                isAlive = false;
+                DestroyMiniGolems();
+                Destroy(gameObject, 0.25f);
+                Destroy(pathwayRocks, 0.25f);
+            }
         }
-
-        if (hit && rb.velocity.magnitude <= 0.25f && health > 0)
-        {
-            hit = false;
-        }
-
-        if (healthBarInstance != null)
-        {
-            healthBarInstance.transform.Find("Health").localScale = new Vector3(Mathf.Clamp(health, 0, 1), 1, 1);
-        }
-
-
-        if (health <= 0)
-        {
-            hit = true;
-            DestroyMiniGolems();
-            Destroy(gameObject, 0.25f);
-        }
-
+       
         // Check for health thresholds for splitting
-        float healthPercentage = health / maxHealth;
-        
+        float healthPercentage = enemyHealth / maxHealth;
+
         if (!split50 && healthPercentage <= 0.5f)
         {
-            Debug.Log("split");
             Split();
             split50 = true;
         }
@@ -75,29 +109,6 @@ public class GolemBossBehaviour : MonoBehaviour
             Split();
             split10 = true;
         }
-    }
-
-    public void MoveToPlayer()
-    {
-
-        Vector3 direction = player.transform.position - transform.position;
-
-        rb.velocity = direction.normalized * speed;
-
-    }
-
-
-    public void OnHit(Vector3 playerPos)
-    {
-        hit = true;
-        health -= 0.34f;
-       
-        if (healthBarInstance == null)
-        {
-            Vector3 healthBarPosition = new Vector3(0, 0.1f, -0.1f);
-            healthBarInstance = Instantiate(healthBarPrefab, transform.position + healthBarPosition, Quaternion.identity, gameObject.transform);
-        }
-
     }
 
     // mini golems split off golem boss
@@ -141,5 +152,46 @@ public class GolemBossBehaviour : MonoBehaviour
         {
             Destroy(instance, 0.25f);
         }
+    }
+
+    private void OnHit()
+    {
+        // Sets the flag that the enemy is now being hit and records the time of the hit
+        isBeingHit = true;
+        hitTimeStamp = Time.time;
+        // Updates the enemy health to factor in the hit damage
+        enemyHealth -= PlayerAttributes.PlayerDamage;
+
+        // Assigns a health bar after the enemy is hit
+        if (healthBarInstance == null)
+        {
+            // Just the offset from the enemy to have the bar display above the enemy's head
+            Vector3 healthBarPosition = new Vector3(0, 0.1f, -0.1f);
+            healthBarInstance = Instantiate(enemyHealthBarPrefab, transform.position + healthBarPosition, Quaternion.identity, gameObject.transform);
+            healthBar = healthBarInstance.transform.Find("Health");
+        }
+
+        // 10% chance of lightning
+        int randomNumber = UnityEngine.Random.Range(1, 11);
+        if (randomNumber == 1) StrikeLightning();
+    }
+
+    // Moves the enemy toward the player - slows down when close
+    private void MoveToPlayer()
+    {
+        Vector3 direction = player.transform.position - transform.position;
+        rb.velocity = direction.normalized * enemySpeed;
+    }
+
+    public void StrikeLightning()
+    {
+        // Instantiate lightning effect at player's position
+        GameObject lightningEffect = Instantiate(lightningInstance, player.transform.position + new Vector3(0, 1.7595f, 0), Quaternion.identity);
+
+        // Deal damage to the player
+        PlayerAttributes.PlayerHealth -= 10;
+
+        // Destroy lightning effect after a certain duration
+        Destroy(lightningEffect, 0.5f);
     }
 }

@@ -20,7 +20,7 @@ namespace Global.Player
 
         private void OnFire(InputValue inputValue)
         {
-            _attackBehaviour.Attack();
+            //_attackBehaviour.Attack();
         }
     }
 }

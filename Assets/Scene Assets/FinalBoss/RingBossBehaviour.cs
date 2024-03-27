@@ -5,7 +5,6 @@ using UnityEngine;
 public class RingBossBehaviour : MonoBehaviour
 {
 
-    
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject player;
 

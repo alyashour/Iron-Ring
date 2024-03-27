@@ -1,7 +1,9 @@
+using Global.Player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /*
     Sets the position of the box collider, and sets it to be active only when the player is attacking
@@ -15,7 +17,7 @@ public class AttackBehaviour : MonoBehaviour
 
     // Values for the sizes and positions of the collider, based on the direction of the attack
     private Vector2 rightPosition = new Vector2(0.11f, -0.02f);
-    private Vector2 leftPosition = new Vector2(-0.11f, -0.02f);
+    private Vector2 leftPosition = new Vector2(0.11f, -0.02f);
     private Vector2 sideSize = new Vector2(0.22f, 0.25f);
 
     private Vector2 upPosition = new Vector2(0, 0.078f);
@@ -25,10 +27,10 @@ public class AttackBehaviour : MonoBehaviour
     // Defines a enum to hold the directions possible, defines a reference to it
     public enum PlayerDirection
     {
+        Down,
         Left,
         Right,
-        Up,
-        Down
+        Up
     }
 
     public PlayerDirection direction;
@@ -96,15 +98,15 @@ public class AttackBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Checks the collision is with an attackable object
-        if (other.CompareTag("Attackable"))
+        if (other.CompareTag("Attackable") || other.CompareTag("Enemy"))
         {
             try
             {
                 // Calls the OnHit method from the collided attackable object, passes the player position
-                other.SendMessage("OnHit", transform.parent.position);
+                other.SendMessage("OnHit", other);
                 StopAttack();
             }
-            catch (NullReferenceException _)
+            catch (NullReferenceException)
             {
                 // ignore the error
             }
