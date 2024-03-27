@@ -8,7 +8,7 @@ public class KongGameManager : MonoBehaviour
 
     private int kongLives;
     private bool kongLevelWon = false;
-    private int currentScene;
+    private string currentScene;
 
     private void Start()
     {
@@ -19,12 +19,12 @@ public class KongGameManager : MonoBehaviour
     private void KongNewGame()
     {
         kongLives = 3; kongLevelWon = false;
-        LoadKongLevel(3);
+        LoadKongLevel("KongScene");
     }
 
-    private void LoadKongLevel(int index)
+    private void LoadKongLevel(string sceneName)
     {
-        currentScene = index;
+        currentScene = sceneName;
 
         Camera camera = Camera.main;
 
@@ -44,13 +44,14 @@ public class KongGameManager : MonoBehaviour
     public void KongLevelComplete()
     {
         kongLevelWon = true;
-        int nextScene = currentScene + 1;
-        if (nextScene == 5)
+        switch (currentScene)
         {
-            LoadKongLevel(3);
-        } else
-        {
-            LoadKongLevel(nextScene);
+            case "KongScene":
+                LoadKongLevel("KongScene 1");
+                break;
+            default:
+                LoadKongLevel("KongScene");
+                break;
         }
     }
     public void KongLevelFailed()
