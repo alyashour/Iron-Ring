@@ -7,6 +7,8 @@ TagManager:
   - Boss
   - SceneBoundary
   - Attackable
+  - Obstacle
+  - Objective
   - Ladder
   - Platform
   - Enemy
