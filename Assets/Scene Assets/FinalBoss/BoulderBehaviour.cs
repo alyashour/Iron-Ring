@@ -8,6 +8,7 @@ public class BoulderBehaviour : MonoBehaviour
     private GameObject _player;
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
+    public int index;
 
     [SerializeField] float spreadValue = 0.25f;
 
@@ -23,7 +24,7 @@ public class BoulderBehaviour : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         SetSprite();
-        float scale = Random.Range(0.1f, 0.5f);
+        float scale = Random.Range(0.25f, 0.5f);
         transform.localScale = new Vector3(scale, scale, 1);
 
 
@@ -37,7 +38,7 @@ public class BoulderBehaviour : MonoBehaviour
 
     private void SetSprite()
     {
-        int index = Random.Range(0, sprites.Length);
+        index = Random.Range(0, sprites.Length);
 
         _spriteRenderer.sprite = sprites[index];
 
@@ -45,21 +46,18 @@ public class BoulderBehaviour : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        // jank - idk
         if (collision.transform.position.z != 2.01f)
         {
-            for (int i = 0; i < 5; i++)
+            int num = Random.Range(1, 6);
+            for (int i = 0; i < num; i++)
             {
                 Vector3 offset = new Vector3(Random.Range(0, 0.25f), Random.Range(0, 0.25f), 0);
                 Vector3 pos = new Vector3(transform.position.x + offset.x, transform.position.y + offset.y, 2.01f);
-                Instantiate(particlePrefab, pos, Quaternion.identity);
+                Instantiate(particlePrefab, pos, Quaternion.identity, transform);
             }
         }
-        Destroy(gameObject, 0.5f);
-        
-        
-
-
-
+        Destroy(gameObject, 0.01f);
     }
 
 }
