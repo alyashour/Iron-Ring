@@ -12,7 +12,7 @@ public class BoulderSpawner : MonoBehaviour
     private float timeSinceLastSpawn = 0;
 
 
-    private float spawnDistanceFromPlayer = 3f;
+    private float spawnDistanceFromPlayer = 4f;
 
 
     private void Start()

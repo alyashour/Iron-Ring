@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,15 @@ public class SceneInitialization : MonoBehaviour
 
     public static int sceneState = 0;
 
+
+    [SerializeField] CinemachineVirtualCamera virtualCamera;
+    private float originalSize = 0.9f;
+    private float zoomFactor = 2;
+    private float currentCamSize;
+    private float t = 0;
+
+
+
     private void Start()
     {
         Door.SetActive(false);
@@ -23,6 +33,9 @@ public class SceneInitialization : MonoBehaviour
         {
             sceneState = 1;
             Door.SetActive(true);
+
+
+
         }
 
 
@@ -30,6 +43,16 @@ public class SceneInitialization : MonoBehaviour
         if (sceneState == 1 && player.transform.position.y > 7)
         {
             sceneState = 2;
+        }
+
+
+
+        if (sceneState >= 1 && currentCamSize < (originalSize * zoomFactor))
+        {
+            currentCamSize = Mathf.Lerp(originalSize, originalSize * zoomFactor, t);
+            t += 0.25f * Time.deltaTime;
+            virtualCamera.m_Lens.OrthographicSize = currentCamSize;
+
         }
 
     }
