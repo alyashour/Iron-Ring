@@ -13,10 +13,10 @@ public class EnemyBehaviour : MonoBehaviour
     private GameObject player;
     
     // Enemy attributes
-    private float enemyHealth = 100f;
+    public float enemyHealth = 100f;
     public float enemyDamage = 10f;
-    private float enemySpeed = 2f;
-    private float enemyKnockBack = 10f;
+    public float enemySpeed = 2f;
+    public float enemyKnockBack = 10f;
 
     // Hit flag fields
     private bool isBeingHit = false;
