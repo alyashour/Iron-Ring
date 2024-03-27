@@ -4,14 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Attackable
   - Boss
   - SceneBoundary
   - Attackable
-  - Platform
-  - Ladder
   - Obstacle
   - Objective
+  - Ladder
+  - Platform
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -24,7 +24,7 @@ TagManager:
   - Pellet
   - Obstacle
   - Node
-  - 
+  - Doors
   - 
   - 
   - 
@@ -46,6 +46,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 3984460309
+    locked: 0
+  - name: Water
+    uniqueID: 781000749
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

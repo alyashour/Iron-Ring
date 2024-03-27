@@ -98,7 +98,7 @@ public class AttackBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Checks the collision is with an attackable object
-        if (other.CompareTag("Attackable"))
+        if (other.CompareTag("Attackable") || other.CompareTag("Enemy"))
         {
             try
             {
