@@ -9,7 +9,6 @@ using System.IO;
 
 public class InitializeGame : MonoBehaviour
 {
-
     // The data to be saved
 
     // The current state of the game - essentially the # of bosses defeated
@@ -56,7 +55,6 @@ public class InitializeGame : MonoBehaviour
 
     public void Save()
     {
-
         gameState = PlayerAttributes.BossesDefeated;
         scene = PlayerAttributes.CurrentScene;
         level = PlayerAttributes.PlayerLevel;
@@ -82,15 +80,12 @@ public class InitializeGame : MonoBehaviour
         string json = JsonUtility.ToJson(saveObject);
 
         File.WriteAllText(Application.dataPath + "/save.txt", json);
-
-
     }
 
     public void Load()
     {
         if (File.Exists(Application.dataPath + "/save.txt"))
         {
-
             print("loading from file...");
 
             string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
@@ -106,14 +101,11 @@ public class InitializeGame : MonoBehaviour
             PlayerAttributes.PlayerSpeed = saveObject.playerSpeed;
             PlayerAttributes.PlayerDefence = saveObject.playerDefence;
             PlayerAttributes.PlayerDamage = saveObject.playerDamage;
-
-        } else
+        }
+        else
         {
             print("loading from defaults");
             PlayerAttributes.InitializeAttributes();
         }
-
-
     }
-
 }

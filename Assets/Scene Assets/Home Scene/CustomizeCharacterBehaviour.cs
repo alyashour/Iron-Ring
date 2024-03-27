@@ -1,18 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using Global;
 using UnityEngine;
 
-public class CustomizeCharacterBehaviour : MonoBehaviour
+namespace Scene_Assets.Home_Scene
 {
-    // Start is called before the first frame update
-    void Start()
+    public class CustomizeCharacterBehaviour : MonoBehaviour, IInteractable
     {
-        
-    }
+        public bool CanInteract { get; private set; } = false;
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Start is called before the first frame update
+        void Start()
+        {
         
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+        
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.name == "Player") CanInteract = true;
+        }
+
+        private void OnCollisionExit2D(Collision2D other)
+        {
+            if (other.gameObject.name == "Player") CanInteract = false;
+        }
+
+        public void Interact()
+        {
+            
+        }
     }
 }
