@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PortalTest1.unity
     guid: 21b5c49ecd9af49f4a753f02ece9d423
+  - enabled: 1
+    path: Assets/Scenes/KongPreload.unity
+    guid: e89ceb518b03a484b80b41d24964af90
+  - enabled: 1
+    path: Assets/Scenes/KongScene.unity
+    guid: f16b0a1464e60e444bb797505275cd97
+  - enabled: 1
+    path: Assets/Scenes/KongScene 1.unity
+    guid: 3cda27ab1e647154685d403a5d910399
   m_configObjects: {}

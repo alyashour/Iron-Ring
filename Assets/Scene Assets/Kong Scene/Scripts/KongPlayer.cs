@@ -49,6 +49,16 @@ public class KongPlayer : MonoBehaviour
                 }
             }
         }
+        if (collision.gameObject.CompareTag("Objective"))
+        {
+            enabled = false;
+            FindObjectOfType<KongGameManager>().KongLevelComplete();
+        } 
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            enabled = false;
+            FindObjectOfType<KongGameManager>().KongLevelFailed();
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {

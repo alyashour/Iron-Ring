@@ -8,6 +8,10 @@ TagManager:
   - Boss
   - SceneBoundary
   - Attackable
+  - Platform
+  - Ladder
+  - Obstacle
+  - Objective
   layers:
   - Default
   - TransparentFX
