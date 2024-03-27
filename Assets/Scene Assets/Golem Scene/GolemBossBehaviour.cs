@@ -46,6 +46,9 @@ public class GolemBossBehaviour : MonoBehaviour
     private GameObject healthBarInstance;
     private Transform healthBar;
 
+    // reference to lightning bolt prefab
+    public GameObject lightningInstance;
+
     public void Start()
     {
         // Assigns the player reference
@@ -167,6 +170,10 @@ public class GolemBossBehaviour : MonoBehaviour
             healthBarInstance = Instantiate(enemyHealthBarPrefab, transform.position + healthBarPosition, Quaternion.identity, gameObject.transform);
             healthBar = healthBarInstance.transform.Find("Health");
         }
+
+        // 10% chance of lightning
+        int randomNumber = UnityEngine.Random.Range(1, 11);
+        if (randomNumber == 1) StrikeLightning();
     }
 
     // Moves the enemy toward the player - slows down when close
@@ -174,5 +181,17 @@ public class GolemBossBehaviour : MonoBehaviour
     {
         Vector3 direction = player.transform.position - transform.position;
         rb.velocity = direction.normalized * enemySpeed;
+    }
+
+    public void StrikeLightning()
+    {
+        // Instantiate lightning effect at player's position
+        GameObject lightningEffect = Instantiate(lightningInstance, player.transform.position + new Vector3(0, 1.7595f, 0), Quaternion.identity);
+
+        // Deal damage to the player
+        PlayerAttributes.PlayerHealth -= 10;
+
+        // Destroy lightning effect after a certain duration
+        Destroy(lightningEffect, 0.5f);
     }
 }

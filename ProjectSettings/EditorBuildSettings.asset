@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PortalTest1.unity
     guid: 21b5c49ecd9af49f4a753f02ece9d423
+  - enabled: 1
+    path: Assets/Scenes/GolemBoss.unity
+    guid: 91b8de2540e8b25489c8f9a266f97313
+  - enabled: 1
+    path: Assets/Scenes/Village.unity
+    guid: 4805ca5272fb44aa4a98f203850b386d
   m_configObjects: {}
