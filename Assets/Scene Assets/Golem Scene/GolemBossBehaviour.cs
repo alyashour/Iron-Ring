@@ -30,10 +30,10 @@ public class GolemBossBehaviour : MonoBehaviour
     public GameObject player;
 
     // Enemy attributes
-    public float enemyHealth;
-    public float enemyDamage;
-    public float enemySpeed;
-    public float enemyKnockBack;
+    public float enemyHealth = 100f;
+    public float enemyDamage = 10f;
+    public float enemySpeed = 2f;
+    public float enemyKnockBack = 10f;
 
     // Hit flag fields
     private bool isBeingHit = false;
@@ -60,7 +60,6 @@ public class GolemBossBehaviour : MonoBehaviour
             // Moves toward the player if the enemy is not being hit currently
             if (!isBeingHit)
             {
-                Debug.Log("Move");
                 MoveToPlayer();
             }
             else
@@ -75,15 +74,17 @@ public class GolemBossBehaviour : MonoBehaviour
             // Updates the health bar size based on the health value
             if (healthBarInstance != null)
             {
-                float clampHealth = Mathf.Clamp(enemyHealth, 0, 100);
-                healthBar.localScale = new Vector3(clampHealth * 0.01f, 1, 1);
+                float clampHealth = Mathf.Clamp(enemyHealth/500, 0, 500);
+                healthBar.localScale = new Vector3(clampHealth , 1, 1);
             }
 
             // Stops enemy behaviour and destroys the enemy game object if the health falls below 0
             if (enemyHealth <= 0)
             {
                 isAlive = false;
+                DestroyMiniGolems();
                 Destroy(gameObject, 0.25f);
+                Destroy(pathwayRocks, 0.25f);
             }
         }
        

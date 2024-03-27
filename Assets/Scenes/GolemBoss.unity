@@ -15673,7 +15673,7 @@ GameObject:
   - component: {fileID: 1426996146}
   m_Layer: 0
   m_Name: Golem Boss
-  m_TagString: Attackable
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15685,11 +15685,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426996142}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1331b6d7f04ccbb4b8e9cb55ce1e5b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniGolemPrefab: {fileID: 6196903956976431195, guid: ea3c99f880b31934fae571518cef5094, type: 3}
+  portalPrefab: {fileID: 5578985901375440752, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
+  pathwayRocks: {fileID: 25849803}
   rb: {fileID: 1426996147}
   enemyHealthBarPrefab: {fileID: 3129416824600834654, guid: 4fd74c390f88849f19cca7702741e2e8, type: 3}
   player: {fileID: 857300350}
@@ -15697,9 +15700,6 @@ MonoBehaviour:
   enemyDamage: 10
   enemySpeed: 0.25
   enemyKnockBack: 0
-  miniGolemPrefab: {fileID: 6196903956976431195, guid: ea3c99f880b31934fae571518cef5094, type: 3}
-  portalPrefab: {fileID: 5578985901375440752, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
-  pathwayRocks: {fileID: 25849803}
 --- !u!212 &1426996144
 SpriteRenderer:
   m_ObjectHideFlags: 0
