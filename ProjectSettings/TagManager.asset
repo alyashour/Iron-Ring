@@ -7,8 +7,10 @@ TagManager:
   - Boss
   - SceneBoundary
   - Attackable
-  - Platform
+  - Obstacle
+  - Objective
   - Ladder
+  - Platform
   - Enemy
   layers:
   - Default
@@ -22,7 +24,7 @@ TagManager:
   - Pellet
   - Obstacle
   - Node
-  - 
+  - Doors
   - 
   - 
   - 
@@ -44,6 +46,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 3984460309
+    locked: 0
+  - name: Water
+    uniqueID: 781000749
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

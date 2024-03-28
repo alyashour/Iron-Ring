@@ -313,6 +313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magician
       objectReference: {fileID: 0}
+    - target: {fileID: 6989579457562777182, guid: f21e4d03a769bac479e12c6b6b44abeb, type: 3}
+      propertyPath: m_TagString
+      value: Objective
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -839,7 +843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6738704605260525021, guid: 50296945caf42204aa46b93e119764a8, type: 3}
   minTime: 2
-  maxTime: 4
+  maxTime: 3
 --- !u!4 &679087929
 Transform:
   m_ObjectHideFlags: 0
