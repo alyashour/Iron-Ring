@@ -7,7 +7,7 @@ namespace Scene_Assets.Home_Scene
     public class CupboardBehaviour : MonoBehaviour, IInteractable
     {
         public bool CanInteract { get; private set; }
-        [SerializeField] private ColorPreviewScript preview;
+        [SerializeField] private ColorPreviewManager preview;
         
         private void OnCollisionEnter(Collision other)
         {

@@ -1,20 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Scene_Assets
+namespace Scene_Assets.Home_Scene
 {
-    public class ColorPreviewScript : MonoBehaviour
+    public class ColorPreviewManager : MonoBehaviour
     {
         [SerializeField] private Slider redInput, greenInput, blueInput;
         [SerializeField] private GameObject playerObj, menuCanvas;
+        [SerializeField] private Image previewImage;
         
         private float _red, _green, _blue;
-        private Image _image;
-        
-        public void Start()
-        {
-            _image = gameObject.GetComponent<Image>();
-        }
     
         /**
          * This runs if the player updates through the sliders
@@ -27,7 +22,7 @@ namespace Scene_Assets
             _blue = blueInput.value;
         
             var color = new Color(_red, _green, _blue);
-            _image.color = color;
+            previewImage.color = color;
         }
 
         /**
@@ -41,7 +36,7 @@ namespace Scene_Assets
             _blue = color.b;
             
             // update the player color
-            _image.color = color;
+            previewImage.color = color;
             
             // update the sliders
             redInput.value = color.r;
