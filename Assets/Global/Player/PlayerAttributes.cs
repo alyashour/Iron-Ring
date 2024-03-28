@@ -26,6 +26,8 @@ public class PlayerAttributes : MonoBehaviour
 
     public static bool Alive {  get; set; }
 
+    public static Color PlayerColor { get; set; }
+
 
     // Assigns the initial values for the player attributes - only call at the very start of the game
     public static void InitializeAttributes()
@@ -43,5 +45,7 @@ public class PlayerAttributes : MonoBehaviour
         PlayerXP = 0;
 
         Alive = true;
+
+        PlayerColor = Color.white;
     }
 }
