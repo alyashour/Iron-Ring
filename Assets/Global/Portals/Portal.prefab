@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationSceneName: 
   destinationPortalName: 
-  teleportDelayTime: 2
+  teleportDelayTime: 4
   teleportAcrossScenes: 1
 --- !u!70 &3469356889303267041
 CapsuleCollider2D:

@@ -9,24 +9,26 @@ using System.IO;
 
 public class InitializeGame : MonoBehaviour
 {
-
     // The data to be saved
 
     // The current state of the game - essentially the # of bosses defeated
-    private int gameState;
+    private static int gameState;
 
     // The current scene the player is in, at their save point
-    private string scene;
+    private static string scene;
 
     // The players level and xp
-    private int level;
-    private int xp;
+    private static int level;
+    private static int xp;
 
     // Other attributes of the player
-    private float playerHealth;
-    private float playerSpeed;
-    private float playerDefence;
-    private float playerDamage;
+    private static float playerHealth;
+    private static float playerSpeed;
+    private static float playerDefence;
+    private static float playerDamage;
+
+    // Player color
+    private static Color playerColor;
 
     private void Start()
     {
@@ -52,11 +54,11 @@ public class InitializeGame : MonoBehaviour
         public float playerSpeed;
         public float playerDefence;
         public float playerDamage;
+        public Color playerColor;
     }
 
-    public void Save()
+    public static void Save()
     {
-
         gameState = PlayerAttributes.BossesDefeated;
         scene = PlayerAttributes.CurrentScene;
         level = PlayerAttributes.PlayerLevel;
@@ -65,7 +67,7 @@ public class InitializeGame : MonoBehaviour
         playerSpeed = PlayerAttributes.PlayerSpeed;
         playerDefence = PlayerAttributes.PlayerDefence;
         playerDamage = PlayerAttributes.PlayerDamage;
-
+        playerColor = PlayerAttributes.PlayerColor;
 
         SaveObject saveObject = new SaveObject
         {
@@ -76,21 +78,19 @@ public class InitializeGame : MonoBehaviour
             playerHealth = playerHealth,
             playerSpeed = playerSpeed,
             playerDefence = playerDefence,
-            playerDamage = playerDamage
+            playerDamage = playerDamage,
+            playerColor = playerColor
         };
 
         string json = JsonUtility.ToJson(saveObject);
 
         File.WriteAllText(Application.dataPath + "/save.txt", json);
-
-
     }
 
-    public void Load()
+    public static void Load()
     {
         if (File.Exists(Application.dataPath + "/save.txt"))
         {
-
             print("loading from file...");
 
             string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
@@ -106,14 +106,12 @@ public class InitializeGame : MonoBehaviour
             PlayerAttributes.PlayerSpeed = saveObject.playerSpeed;
             PlayerAttributes.PlayerDefence = saveObject.playerDefence;
             PlayerAttributes.PlayerDamage = saveObject.playerDamage;
-
-        } else
+            PlayerAttributes.PlayerColor = saveObject.playerColor;
+        }
+        else
         {
             print("loading from defaults");
             PlayerAttributes.InitializeAttributes();
         }
-
-
     }
-
 }
