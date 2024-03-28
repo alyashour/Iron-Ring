@@ -31,8 +31,9 @@ namespace Global.Player
         private float _lastAttackTime = 0f;
 
         public AttackBehaviour.PlayerDirection playerDirection;
-        
-        
+
+        public bool lockMovement = false;
+
         // todo: make this value influence the animation speed!
         [SerializeField] private float attackCooldown = 0.3f; // in seconds
         private bool _isAttacking; // do not use, use the IsAttacking property instead
@@ -62,9 +63,19 @@ namespace Global.Player
         
         private void FixedUpdate()
         {
-            // Moves the player
-            Move();
-
+            // Can't move if you're dead
+            if (PlayerAttributes.Alive)
+            {
+                if (!lockMovement)
+                {
+                    // Moves the player
+                    Move();
+                }
+            }
+            else
+            {
+                _rb.velocity = Vector2.zero;
+            }
             if (Time.time - _lastAttackTime > attackCooldown)
             {
                 IsAttacking = false;
@@ -130,40 +141,49 @@ namespace Global.Player
         // Gets the user input to update the player movement vector
         private void OnMove(InputValue inputValue)
         {
-            var newMovementInput = inputValue.Get<Vector2>();
-
-            if (newMovementInput.magnitude < 0.05) // should be a very small number (bcuz floats)
+            // Again - can't move if you're dead
+            if (PlayerAttributes.Alive)
             {
-                _animator.SetBool("isMoving", false);
-                newMovementInput = Vector2.zero;
-            }
-            else
-            {
-                // the player is moving
-                _animator.SetBool("isMoving", true);
-                
-                var flip = newMovementInput.x < 0;
-                
-                gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, flip ? 180f : 0f));
-            }
+                var newMovementInput = inputValue.Get<Vector2>();
 
-            _movementInput = newMovementInput;
+                if (newMovementInput.magnitude < 0.05) // should be a very small number (bcuz floats)
+                {
+                    _animator.SetBool("isMoving", false);
+                    newMovementInput = Vector2.zero;
+                }
+                else
+                {
+                    // the player is moving
+                    _animator.SetBool("isMoving", true);
+
+                    var flip = newMovementInput.x < 0;
+
+                    gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, flip ? 180f : 0f));
+                }
+
+                _movementInput = newMovementInput;
+            }
+            
         }
 
         private void OnFire(InputValue inputValue)
         {
-            // if already attacking
-            if (IsAttacking)
+            // Can't attack if you're dead
+            if (PlayerAttributes.Alive)
             {
-                // do nothing
-            }
-            else
-            {
-                // not already attacking
-                IsAttacking = true;
-                _attackBehaviour.direction = playerDirection;
-                _attackBehaviour.Attack();
-              
+                // if already attacking
+                if (IsAttacking)
+                {
+                    // do nothing
+                }
+                else
+                {
+                    // not already attacking
+                    IsAttacking = true;
+                    _attackBehaviour.direction = playerDirection;
+                    _attackBehaviour.Attack();
+
+                }
             }
         }
     }

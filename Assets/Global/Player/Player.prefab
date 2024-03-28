@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 3456094668169969235}
   - component: {fileID: -1634102925649992798}
   - component: {fileID: 6941517946081553449}
+  - component: {fileID: 2118767976085164390}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -321,6 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.75
   playerDirection: 0
+  lockMovement: 0
   attackCooldown: 0.3
 --- !u!114 &-1634102925649992798
 MonoBehaviour:
@@ -346,5 +348,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b44045c992ab4643afc1a0cc191d5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 0}
-  cooldownTime: 1
+  damagePerHit: 10
+--- !u!114 &2118767976085164390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6923967991901825277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8e6674650984a459da4274b95cd7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalDeathSprite: {fileID: 1724316754, guid: 37fc74d9ee4fdb44d8963cbe4ea09fd0, type: 3}
+  DeathHudPrefab: {fileID: 1492155403439957171, guid: 558471aec8fb6884bb1c993e0ea1197e, type: 3}
