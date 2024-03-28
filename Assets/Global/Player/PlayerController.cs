@@ -1,8 +1,5 @@
-using System;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using Vector2 = UnityEngine.Vector2;
 
 namespace Global.Player
@@ -12,7 +9,7 @@ namespace Global.Player
         private AttackBehaviour _attackBehaviour;
         private PlayerMovement _playerMovement;
         [SerializeField] private float interactionDistance = 1f;
-        
+
         // Start is called before the first frame update
         void Start()
         {
@@ -30,10 +27,10 @@ namespace Global.Player
         {
             // get a reference to the object
             AttackBehaviour.PlayerDirection direction = _playerMovement.playerDirection; // get direction
-            
+
             // convert direction to vector
             Vector2 directionVector;
-            switch (direction) 
+            switch (direction)
             {
                 case AttackBehaviour.PlayerDirection.Left:
                     directionVector = Vector2.left;
@@ -57,7 +54,7 @@ namespace Global.Player
             if (hit.collider != null)
             {
                 IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-                Debug.Log("SUI" + interactable);
+                interactable.Interact();
             }
         }
     }
