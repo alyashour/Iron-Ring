@@ -9,7 +9,19 @@ public class KongGameManager : MonoBehaviour
     private int kongLives;
     private bool kongLevelWon = false;
     private string currentScene;
+    public static KongGameManager instance;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
