@@ -10,8 +10,9 @@ public class PlayerDeathBehaviour : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     [SerializeField] Sprite finalDeathSprite;
-
     private float timeSinceDeath = 0;
+
+    [SerializeField] GameObject DeathHudPrefab;
 
     private void Start()
     {
@@ -25,8 +26,7 @@ public class PlayerDeathBehaviour : MonoBehaviour
         if (PlayerAttributes.PlayerHealth <= 0 && PlayerAttributes.Alive)
         {
             PlayerAttributes.Alive = false;
-            _animator.SetBool("Alive", false);
-            _animator.Play("Player_Die");
+            HandleDeath();
         }
 
         if (timeSinceDeath > 0.3f)
@@ -40,5 +40,14 @@ public class PlayerDeathBehaviour : MonoBehaviour
         {
             timeSinceDeath += Time.deltaTime;
         }
+    }
+
+    private void HandleDeath()
+    {
+        _animator.SetBool("Alive", false);
+        _animator.Play("Player_Die");
+
+        Instantiate(DeathHudPrefab, transform.position, Quaternion.identity, transform);
+
     }
 }

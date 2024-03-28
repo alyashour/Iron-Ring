@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Entity class for the player attributes - ouda would be proud
 // Author: Aiden
@@ -35,6 +36,8 @@ public class PlayerAttributes : MonoBehaviour
         PlayerDamage = 10;
 
         PlayerKnockback = 20;
+
+        CurrentScene = "Village";
 
         PlayerLevel = 0;
         PlayerXP = 0;
