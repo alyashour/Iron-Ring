@@ -348,7 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b44045c992ab4643afc1a0cc191d5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 1
   damagePerHit: 10
 --- !u!114 &2118767976085164390
 MonoBehaviour:
@@ -363,3 +362,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finalDeathSprite: {fileID: 1724316754, guid: 37fc74d9ee4fdb44d8963cbe4ea09fd0, type: 3}
+  DeathHudPrefab: {fileID: 1492155403439957171, guid: 558471aec8fb6884bb1c993e0ea1197e, type: 3}

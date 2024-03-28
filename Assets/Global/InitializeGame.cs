@@ -12,20 +12,20 @@ public class InitializeGame : MonoBehaviour
     // The data to be saved
 
     // The current state of the game - essentially the # of bosses defeated
-    private int gameState;
+    private static int gameState;
 
     // The current scene the player is in, at their save point
-    private string scene;
+    private static string scene;
 
     // The players level and xp
-    private int level;
-    private int xp;
+    private static int level;
+    private static int xp;
 
     // Other attributes of the player
-    private float playerHealth;
-    private float playerSpeed;
-    private float playerDefence;
-    private float playerDamage;
+    private static float playerHealth;
+    private static float playerSpeed;
+    private static float playerDefence;
+    private static float playerDamage;
 
     private void Start()
     {
@@ -53,7 +53,7 @@ public class InitializeGame : MonoBehaviour
         public float playerDamage;
     }
 
-    public void Save()
+    public static void Save()
     {
         gameState = PlayerAttributes.BossesDefeated;
         scene = PlayerAttributes.CurrentScene;
@@ -82,7 +82,7 @@ public class InitializeGame : MonoBehaviour
         File.WriteAllText(Application.dataPath + "/save.txt", json);
     }
 
-    public void Load()
+    public static void Load()
     {
         if (File.Exists(Application.dataPath + "/save.txt"))
         {
