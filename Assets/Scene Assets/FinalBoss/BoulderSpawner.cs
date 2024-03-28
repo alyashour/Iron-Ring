@@ -11,8 +11,10 @@ public class BoulderSpawner : MonoBehaviour
     private float startTime;
     private float timeSinceLastSpawn = 0;
 
+    [SerializeField] float spawnRate = 0.75f;
 
-    private float spawnDistanceFromPlayer = 3f;
+
+    private float spawnDistanceFromPlayer = 6.5f;
 
 
     private void Start()
@@ -27,7 +29,7 @@ public class BoulderSpawner : MonoBehaviour
 
         if (SceneInitialization.sceneState == 2)
         {
-            if (timeSinceLastSpawn >= 1)
+            if (timeSinceLastSpawn >= spawnRate)
             {
                 startTime = Time.time;
 
@@ -49,7 +51,7 @@ public class BoulderSpawner : MonoBehaviour
     {
         Vector3 randDir = Random.insideUnitSphere.normalized;
 
-        return player.transform.position + randDir * spawnDistanceFromPlayer;
+        return player.transform.position + (randDir * spawnDistanceFromPlayer);
 
 
     }

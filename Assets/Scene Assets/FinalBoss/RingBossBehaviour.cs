@@ -8,6 +8,10 @@ public class RingBossBehaviour : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject player;
 
+    [SerializeField] GameObject enemyHealthBarPrefab;
+    private GameObject healthBarInstance;
+    private Transform healthBar;
+
     // Boss attributes
     private float enemyHealth = 100f;
     public float enemyDamage = 10f;
