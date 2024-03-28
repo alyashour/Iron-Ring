@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Deals with the logic for when the player dies
@@ -33,7 +31,7 @@ public class PlayerDeathBehaviour : MonoBehaviour
         {
             // Sets the sprite to the last frame of the death animation and removes the animator so it stops playing animations
             _spriteRenderer.sprite = finalDeathSprite;
-            gameObject.GetComponent<Animator>().enabled = false;
+            _animator.enabled = false;
         }
 
         if (!PlayerAttributes.Alive)
@@ -48,6 +46,5 @@ public class PlayerDeathBehaviour : MonoBehaviour
         _animator.Play("Player_Die");
 
         Instantiate(DeathHudPrefab, transform.position, Quaternion.identity, transform);
-
     }
 }

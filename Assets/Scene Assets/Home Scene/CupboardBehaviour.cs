@@ -4,22 +4,11 @@ using UnityEngine;
 
 namespace Scene_Assets.Home_Scene
 {
-    public class CustomizeCharacterBehaviour : MonoBehaviour, IInteractable
+    public class CupboardBehaviour : MonoBehaviour, IInteractable
     {
-        public bool CanInteract { get; private set; } = false;
-
-        // Start is called before the first frame update
-        void Start()
-        {
+        public bool CanInteract { get; private set; }
+        [SerializeField] private ColorPreviewManager preview;
         
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
-
         private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.name == "Player") CanInteract = true;
@@ -32,7 +21,8 @@ namespace Scene_Assets.Home_Scene
 
         public void Interact()
         {
-            
+            // open customization menu
+            preview.OpenMenu();
         }
     }
 }
