@@ -55,6 +55,12 @@ public class SceneInitialization : MonoBehaviour
 
         }
 
+
+        if (!PlayerAttributes.Alive)
+        {
+            sceneState = -5;
+        }
+
     }
 
 }
