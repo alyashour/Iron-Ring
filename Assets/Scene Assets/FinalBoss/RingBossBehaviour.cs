@@ -14,7 +14,7 @@ public class RingBossBehaviour : MonoBehaviour
 
     // Boss attributes
     private float enemyHealth = 100f;
-    public float enemyDamage = 10f;
+    public float enemyDamage = 50f;
     private float enemySpeed = 0.25f;
     private float enemyKnockBack = 10f;
 

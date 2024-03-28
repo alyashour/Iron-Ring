@@ -23,6 +23,8 @@ public class PlayerAttributes : MonoBehaviour
     public static int BossesDefeated { get; set; }
     public static string CurrentScene { get; set; }
 
+    public static bool Alive {  get; set; }
+
 
     // Assigns the initial values for the player attributes - only call at the very start of the game
     public static void InitializeAttributes()
@@ -32,10 +34,11 @@ public class PlayerAttributes : MonoBehaviour
         PlayerDefence = 0;
         PlayerDamage = 10;
 
-        PlayerKnockback = 10;
+        PlayerKnockback = 20;
 
         PlayerLevel = 0;
         PlayerXP = 0;
-    }
 
+        Alive = true;
+    }
 }
