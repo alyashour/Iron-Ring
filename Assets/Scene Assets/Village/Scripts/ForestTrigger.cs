@@ -34,7 +34,7 @@ public class ForestTrigger : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             DontDestroyOnLoad(gameObject);
-            LoadForest("KongScene");
+            LoadForest("Forest");
         }
     }
 

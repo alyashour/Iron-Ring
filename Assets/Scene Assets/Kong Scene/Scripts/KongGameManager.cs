@@ -59,7 +59,8 @@ public class KongGameManager : MonoBehaviour
         switch (currentScene)
         {
             case "KongScene":
-                LoadKongLevel("KongScene 1");
+                Debug.Log("Yo");
+                LoadKongLevel("Forest");
                 break;
             default:
                 LoadKongLevel("KongScene");
