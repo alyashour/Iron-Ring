@@ -7,9 +7,10 @@ public class KongGameManager : MonoBehaviour
 {
 
     private int kongLives;
-    private bool kongLevelWon = false;
+    public static bool kongLevelWon = false;
     private string currentScene;
     public static KongGameManager instance;
+    public static GameOverHUDBehaviour gameOverHUD;
 
     private void Awake()
     {
@@ -59,7 +60,8 @@ public class KongGameManager : MonoBehaviour
         switch (currentScene)
         {
             case "KongScene":
-                LoadKongLevel("KongScene 1");
+                Debug.Log("Yo");
+                LoadKongLevel("Forest");
                 break;
             default:
                 LoadKongLevel("KongScene");
