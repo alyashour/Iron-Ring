@@ -425,6 +425,7 @@ MonoBehaviour:
   loadImage: {fileID: 7438195369996298050}
   quitImage: {fileID: 361323636720929491}
   gameOverText: {fileID: 161377373693705808}
+  eventSysPrefab: {fileID: 1690018065358011319, guid: 503df8b14a4811449be9a29941004b39, type: 3}
 --- !u!1 &6358475871347897339
 GameObject:
   m_ObjectHideFlags: 0
