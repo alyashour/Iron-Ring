@@ -56,7 +56,6 @@ public class GameOverHUDBehaviour : MonoBehaviour
         gameOverText.color = newTextC;
     }
 
-
     public void LoadLastSave()
     {
         InitializeGame.Load();
@@ -69,7 +68,6 @@ public class GameOverHUDBehaviour : MonoBehaviour
         Application.Quit();
     }
 
-
     private void GetEventSys()
     {
         if (GameObject.Find("EventSystem") == null)
@@ -78,7 +76,4 @@ public class GameOverHUDBehaviour : MonoBehaviour
         }
 
     }
-
-
-
 }
