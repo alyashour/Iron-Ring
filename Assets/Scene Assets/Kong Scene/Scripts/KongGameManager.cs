@@ -10,6 +10,7 @@ public class KongGameManager : MonoBehaviour
     public static bool kongLevelWon = false;
     private string currentScene;
     public static KongGameManager instance;
+    public static GameOverHUDBehaviour gameOverHUD;
 
     private void Awake()
     {
