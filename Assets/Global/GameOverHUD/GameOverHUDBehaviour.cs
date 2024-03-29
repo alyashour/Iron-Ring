@@ -15,6 +15,7 @@ public class GameOverHUDBehaviour : MonoBehaviour
     [SerializeField] Image loadImage;
     [SerializeField] Image quitImage;
     [SerializeField] TextMeshProUGUI gameOverText;
+    [SerializeField] GameObject eventSysPrefab;
 
     private float t;
     private Color startColorBG;
@@ -29,6 +30,7 @@ public class GameOverHUDBehaviour : MonoBehaviour
         startColorBG = background.color;
         startColorB = loadImage.color;
         startTime = Time.time;
+        GetEventSys();
     }
 
     private void Update()
@@ -58,6 +60,7 @@ public class GameOverHUDBehaviour : MonoBehaviour
     public void LoadLastSave()
     {
         InitializeGame.Load();
+        print(PlayerAttributes.CurrentScene);
         SceneManager.LoadScene(PlayerAttributes.CurrentScene);
     }
 
@@ -65,4 +68,17 @@ public class GameOverHUDBehaviour : MonoBehaviour
     {
         Application.Quit();
     }
+
+
+    private void GetEventSys()
+    {
+        if (GameObject.Find("EventSystem") == null)
+        {
+            Instantiate(eventSysPrefab);
+        }
+
+    }
+
+
+
 }
