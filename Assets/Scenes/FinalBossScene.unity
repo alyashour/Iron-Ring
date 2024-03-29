@@ -2153,7 +2153,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1280156411}
   player: {fileID: 2009490563}
+  sr: {fileID: 1280156407}
   enemyHealthBarPrefab: {fileID: 0}
+  enemyHealth: 1000
   enemyDamage: 10
 --- !u!50 &1280156411
 Rigidbody2D:
@@ -2616,6 +2618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2009490563}
   Door: {fileID: 550144977}
+  healthBarDisplay: {fileID: 4330756065800875887, guid: 1e8b9fd64135e244bbb765f083bf8de4, type: 3}
   doorYValue: 2.5
   sceneState: 0
   virtualCamera: {fileID: 1703963720}
