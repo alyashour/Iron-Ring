@@ -7,7 +7,7 @@ public class KongGameManager : MonoBehaviour
 {
 
     private int kongLives;
-    private bool kongLevelWon = false;
+    public static bool kongLevelWon = false;
     private string currentScene;
     public static KongGameManager instance;
 
