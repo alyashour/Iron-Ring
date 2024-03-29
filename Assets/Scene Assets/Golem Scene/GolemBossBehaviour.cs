@@ -4,13 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-/* TODO by March 26
- * figure out dealing damage to player
- * figure out knockback user by chance
- * figure out lighting strike on user by chance
- */
-
 public class GolemBossBehaviour : MonoBehaviour
 {
     private bool split50 = false;
