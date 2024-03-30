@@ -2155,7 +2155,9 @@ MonoBehaviour:
   player: {fileID: 2009490563}
   sr: {fileID: 1280156407}
   enemyHealthBarPrefab: {fileID: 0}
-  enemyHealth: 1000
+  particlePrefab: {fileID: 2991474116490787974, guid: 8c849a63d98e0314fb3819603d0b66a0, type: 3}
+  ringDropPrefab: {fileID: 3417503825641823064, guid: 288faf1bedfe18044a770003f8f61fa8, type: 3}
+  enemyHealth: 10
   enemyDamage: 10
 --- !u!50 &1280156411
 Rigidbody2D:
@@ -2326,6 +2328,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3456094668169969235, guid: b9afdfa707e3940f5ba68943c896059c, type: 3}
+      propertyPath: speed
+      value: 3.75
+      objectReference: {fileID: 0}
     - target: {fileID: 4099917581962263278, guid: b9afdfa707e3940f5ba68943c896059c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

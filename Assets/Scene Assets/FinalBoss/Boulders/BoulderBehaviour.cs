@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Author: Aiden
+
 public class BoulderBehaviour : MonoBehaviour
 {
-
     private GameObject _player;
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
@@ -27,26 +28,21 @@ public class BoulderBehaviour : MonoBehaviour
         float scale = Random.Range(0.25f, 0.5f);
         transform.localScale = new Vector3(scale, scale, 1);
 
-
         float speedValue = Random.Range(0.5f, 2f);
         Vector3 randomOffset = new Vector3(Random.Range(0, spreadValue), Random.Range(0, spreadValue), 0);
 
         moveDirection = _player.transform.position - transform.position;
         _rb.velocity = (moveDirection + randomOffset) * speedValue;
-
     }
 
     private void SetSprite()
     {
         index = Random.Range(0, sprites.Length);
-
         _spriteRenderer.sprite = sprites[index];
-
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        // jank - idk
         if (collision.transform.position.z != 2.01f)
         {
             int num = Random.Range(1, 6);
@@ -59,5 +55,4 @@ public class BoulderBehaviour : MonoBehaviour
         }
         Destroy(gameObject, 0.01f);
     }
-
 }
