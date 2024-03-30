@@ -42,6 +42,8 @@ public class BoulderSpawner : MonoBehaviour
     private Vector3 GetPosition()
     {
         Vector3 randDir = Random.insideUnitSphere.normalized;
-        return player.transform.position + (randDir * spawnDistanceFromPlayer);
+        Vector3 returnVal = player.transform.position + (randDir * spawnDistanceFromPlayer);
+        returnVal.z = 0.05f;
+        return returnVal;
     }
 }

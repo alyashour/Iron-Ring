@@ -1,4 +1,5 @@
 using Cinemachine;
+using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class SceneInitialization : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject Door;
+    [SerializeField] GameObject healthBarDisplay;
 
     [SerializeField] float doorYValue;
 
@@ -27,16 +29,21 @@ public class SceneInitialization : MonoBehaviour
 
     private void Update()
     {
-        if (player.transform.position.y > doorYValue && sceneState == 0)
+        if (player.transform.position.y > -5 && sceneState == 0)
         {
             sceneState = 1;
+        }
+
+        if (player.transform.position.y > doorYValue && sceneState == 1)
+        {
             Door.SetActive(true);
         }
 
         // If they are near the boss
-        if (sceneState == 1 && player.transform.position.y > 7)
+        if (sceneState == 1 && player.transform.position.y > 6.5)
         {
             sceneState = 2;
+            Instantiate(healthBarDisplay, GameObject.Find("Player").transform);
         }
 
         if (sceneState >= 1 && currentCamSize < (originalSize * zoomFactor))

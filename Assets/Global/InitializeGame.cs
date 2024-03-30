@@ -27,6 +27,9 @@ public class InitializeGame : MonoBehaviour
     private static float playerDefence;
     private static float playerDamage;
 
+    // Player color
+    private static Color playerColor;
+
     private void Start()
     {
         Load();
@@ -51,6 +54,7 @@ public class InitializeGame : MonoBehaviour
         public float playerSpeed;
         public float playerDefence;
         public float playerDamage;
+        public Color playerColor;
     }
 
     public static void Save()
@@ -63,7 +67,7 @@ public class InitializeGame : MonoBehaviour
         playerSpeed = PlayerAttributes.PlayerSpeed;
         playerDefence = PlayerAttributes.PlayerDefence;
         playerDamage = PlayerAttributes.PlayerDamage;
-
+        playerColor = PlayerAttributes.PlayerColor;
 
         SaveObject saveObject = new SaveObject
         {
@@ -74,7 +78,8 @@ public class InitializeGame : MonoBehaviour
             playerHealth = playerHealth,
             playerSpeed = playerSpeed,
             playerDefence = playerDefence,
-            playerDamage = playerDamage
+            playerDamage = playerDamage,
+            playerColor = playerColor
         };
 
         string json = JsonUtility.ToJson(saveObject);
@@ -101,6 +106,7 @@ public class InitializeGame : MonoBehaviour
             PlayerAttributes.PlayerSpeed = saveObject.playerSpeed;
             PlayerAttributes.PlayerDefence = saveObject.playerDefence;
             PlayerAttributes.PlayerDamage = saveObject.playerDamage;
+            PlayerAttributes.PlayerColor = saveObject.playerColor;
         }
         else
         {
