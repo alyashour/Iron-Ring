@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Author: Aiden
+
 public class ParticleBehaviour : MonoBehaviour
 {
-
     private BoulderBehaviour boulder;
     private int particleIndex;
     [SerializeField] Sprite[] sprites;
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
-
 
     private Vector3 randDir;
     private float randSpeed;
@@ -31,9 +31,7 @@ public class ParticleBehaviour : MonoBehaviour
         float randSize = Random.Range(0.01f, 0.2f);
         transform.localScale = new Vector3(randSize, randSize, 1);
 
-
         Destroy(gameObject, 0.75f);
-
     }
 
     private void Update()
@@ -41,6 +39,4 @@ public class ParticleBehaviour : MonoBehaviour
         _rb.rotation += Time.deltaTime * randomRotSpeed;
         transform.position += randDir * Time.deltaTime * randSpeed;
     }
-
-
 }

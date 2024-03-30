@@ -22,6 +22,8 @@ public class SceneInitialization : MonoBehaviour
     private float currentCamSize;
     private float t = 0;
 
+    private RingBossBehaviour bossb;
+
     private void Start()
     {
         Door.SetActive(false);
@@ -56,6 +58,11 @@ public class SceneInitialization : MonoBehaviour
         if (!PlayerAttributes.Alive)
         {
             sceneState = -5;
+        }
+
+        if (bossb.enemyHealth <= 0)
+        {
+            sceneState = 3;
         }
     }
 }
