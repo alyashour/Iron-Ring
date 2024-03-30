@@ -22,8 +22,9 @@ public class BarBehaviour : MonoBehaviour
 
     private void Update()
     {
-        float health = _bossBehaviour.enemyHealth * (14f/startHealth);
-        float healthScaled = Mathf.Clamp(health, 0, 14);
+        float health = 2 + _bossBehaviour.enemyHealth * (12f/startHealth);
+        float healthScaled = Mathf.Clamp(health, 2, 14);
+        // Health scaled should be between 2 and 14
         _rt.sizeDelta = new Vector2(healthScaled, 3);
     }
 }

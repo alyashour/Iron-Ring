@@ -9,7 +9,6 @@ public class RingBossBehaviour : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject player;
     [SerializeField] SpriteRenderer sr;
-    [SerializeField] GameObject enemyHealthBarPrefab;
     [SerializeField] GameObject particlePrefab;
     [SerializeField] GameObject ringDropPrefab;
 
@@ -58,7 +57,7 @@ public class RingBossBehaviour : MonoBehaviour
             Destroy(gameObject, 0.25f);
             Death();
         }
-
+        //print(enemyHealth);
     }
 
     private void OnHit()
@@ -76,7 +75,6 @@ public class RingBossBehaviour : MonoBehaviour
     {
         Vector3 dir = player.transform.position - transform.position;
         rb.velocity = dir.normalized * enemySpeed;
-
         // Reset the color
         sr.color = Color.red;
     }
@@ -93,10 +91,8 @@ public class RingBossBehaviour : MonoBehaviour
         {
             isBeingHit = true;
             hitTimeStamp = Time.time;
-
             enemyHealth -= 5f;
             sr.color = Color.white;
-
         }
     }
 
@@ -111,7 +107,6 @@ public class RingBossBehaviour : MonoBehaviour
             GameObject a = Instantiate(particlePrefab, pos, Quaternion.identity);
             a.GetComponent<Rigidbody2D>().rotation = angle;
         }
-
         Instantiate(ringDropPrefab, deathPos, Quaternion.identity);
         Destroy(GameObject.Find("HealthBarDisplay(Clone)"));
     }
