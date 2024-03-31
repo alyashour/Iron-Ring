@@ -28,6 +28,17 @@ public class PlayerAttributes : MonoBehaviour
 
     public static Color PlayerColor { get; set; }
 
+    // related to dialogue triggers - Author: Dylen
+
+    public static bool StartScene { get; set; }
+    public static bool GolemComplete { get; set; }
+    public static bool KongComplete { get; set; }
+    public static bool HornCollected { get; set; }
+    public static bool MagicianDisappeared { get; set; }
+    public static bool MetAduoForp { get; set; }
+    public static bool PongComplete { get; set; }
+
+
 
     // Assigns the initial values for the player attributes - only call at the very start of the game
     public static void InitializeAttributes()
@@ -47,5 +58,13 @@ public class PlayerAttributes : MonoBehaviour
         Alive = true;
 
         PlayerColor = Color.white;
+
+        StartScene = false;
+        GolemComplete = false;
+        KongComplete = false;
+        HornCollected = false;
+        MagicianDisappeared = false;
+        MetAduoForp = false;
+        PongComplete = false;
     }
 }
