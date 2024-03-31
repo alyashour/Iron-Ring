@@ -30,6 +30,15 @@ public class InitializeGame : MonoBehaviour
     // Player color
     private static Color playerColor;
 
+    // dialog triggers
+    private static bool startScene;
+    private static bool golemComplete;
+    private static bool kongComplete;
+    private static bool hornCollected;
+    private static bool magicianDisappeared;
+    private static bool metAduoForp;
+    private static bool pongComplete;
+
     private void Start()
     {
         Load();
@@ -55,6 +64,15 @@ public class InitializeGame : MonoBehaviour
         public float playerDefence;
         public float playerDamage;
         public Color playerColor;
+        
+        public bool startScene;
+        public bool golemComplete;
+        public bool kongComplete;
+        public bool hornCollected;
+        public bool magicianDisappeared;
+        public bool metAduoForp;
+        public bool pongComplete;
+
     }
 
     public static void Save()
@@ -68,6 +86,16 @@ public class InitializeGame : MonoBehaviour
         playerDefence = PlayerAttributes.PlayerDefence;
         playerDamage = PlayerAttributes.PlayerDamage;
         playerColor = PlayerAttributes.PlayerColor;
+        
+        // flags for dialog triggers
+        startScene = PlayerAttributes.StartScene;
+        golemComplete = PlayerAttributes.GolemComplete;
+        kongComplete = PlayerAttributes.KongComplete;
+        hornCollected = PlayerAttributes.HornCollected;
+        magicianDisappeared = PlayerAttributes.MagicianDisappeared;
+        metAduoForp = PlayerAttributes.MetAduoForp;
+        pongComplete = PlayerAttributes.PongComplete;
+
 
         SaveObject saveObject = new SaveObject
         {
@@ -79,7 +107,14 @@ public class InitializeGame : MonoBehaviour
             playerSpeed = playerSpeed,
             playerDefence = playerDefence,
             playerDamage = playerDamage,
-            playerColor = playerColor
+            playerColor = playerColor,
+            startScene = startScene,
+            golemComplete = golemComplete,
+            kongComplete = kongComplete,
+            hornCollected = hornCollected,
+            magicianDisappeared = magicianDisappeared,
+            metAduoForp = metAduoForp,
+            pongComplete = pongComplete,
         };
 
         string json = JsonUtility.ToJson(saveObject);
@@ -107,6 +142,14 @@ public class InitializeGame : MonoBehaviour
             PlayerAttributes.PlayerDefence = saveObject.playerDefence;
             PlayerAttributes.PlayerDamage = saveObject.playerDamage;
             PlayerAttributes.PlayerColor = saveObject.playerColor;
+
+            PlayerAttributes.StartScene = saveObject.startScene;
+            PlayerAttributes.GolemComplete = saveObject.golemComplete;
+            PlayerAttributes.KongComplete = saveObject.kongComplete;
+            PlayerAttributes.HornCollected = saveObject.hornCollected;
+            PlayerAttributes.MagicianDisappeared = saveObject.magicianDisappeared;
+            PlayerAttributes.MetAduoForp = saveObject.metAduoForp;
+            PlayerAttributes.PongComplete = saveObject.pongComplete;
         }
         else
         {
