@@ -2960,7 +2960,7 @@ Transform:
   m_GameObject: {fileID: 351549959}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.91, y: -0.74, z: -0.6912732}
+  m_LocalPosition: {x: 6.05, y: -0.54, z: -0.6912732}
   m_LocalScale: {x: 1, y: 1.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2979,7 +2979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Village
-  position: {x: -41.02, y: -6.04}
+  position: {x: -6.83, y: -1}
 --- !u!1 &430389737
 GameObject:
   m_ObjectHideFlags: 0
@@ -11002,11 +11002,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1533437573140598759, guid: c5c71b44562ec4fa596d0e31b7ce69ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.88
+      value: 3.74
       objectReference: {fileID: 0}
     - target: {fileID: 1533437573140598759, guid: c5c71b44562ec4fa596d0e31b7ce69ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1533437573140598759, guid: c5c71b44562ec4fa596d0e31b7ce69ba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11046,7 +11046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6990439454690781168, guid: c5c71b44562ec4fa596d0e31b7ce69ba, type: 3}
       propertyPath: orthographic size
-      value: 7.2
+      value: 5.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11220,11 +11220,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4099917581962263278, guid: b9afdfa707e3940f5ba68943c896059c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.88
+      value: 3.74
       objectReference: {fileID: 0}
     - target: {fileID: 4099917581962263278, guid: b9afdfa707e3940f5ba68943c896059c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4099917581962263278, guid: b9afdfa707e3940f5ba68943c896059c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11285,11 +11285,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 104817486876394522, guid: 1296e850b5d984e3a94ac03c536d64c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.88
+      value: 3.74
       objectReference: {fileID: 0}
     - target: {fileID: 104817486876394522, guid: 1296e850b5d984e3a94ac03c536d64c6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 104817486876394522, guid: 1296e850b5d984e3a94ac03c536d64c6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11333,7 +11333,7 @@ PrefabInstance:
       objectReference: {fileID: 687584895}
     - target: {fileID: 9028799474560141947, guid: 1296e850b5d984e3a94ac03c536d64c6, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 7.2
+      value: 5.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
