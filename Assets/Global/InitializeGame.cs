@@ -9,24 +9,35 @@ using System.IO;
 
 public class InitializeGame : MonoBehaviour
 {
-
     // The data to be saved
 
     // The current state of the game - essentially the # of bosses defeated
-    private int gameState;
+    private static int gameState;
 
     // The current scene the player is in, at their save point
-    private string scene;
+    private static string scene;
 
     // The players level and xp
-    private int level;
-    private int xp;
+    private static int level;
+    private static int xp;
 
     // Other attributes of the player
-    private float playerHealth;
-    private float playerSpeed;
-    private float playerDefence;
-    private float playerDamage;
+    private static float playerHealth;
+    private static float playerSpeed;
+    private static float playerDefence;
+    private static float playerDamage;
+
+    // Player color
+    private static Color playerColor;
+
+    // dialog triggers
+    private static bool startScene;
+    private static bool golemComplete;
+    private static bool kongComplete;
+    private static bool hornCollected;
+    private static bool magicianDisappeared;
+    private static bool metAduoForp;
+    private static bool pongComplete;
 
     private void Start()
     {
@@ -52,11 +63,20 @@ public class InitializeGame : MonoBehaviour
         public float playerSpeed;
         public float playerDefence;
         public float playerDamage;
+        public Color playerColor;
+        
+        public bool startScene;
+        public bool golemComplete;
+        public bool kongComplete;
+        public bool hornCollected;
+        public bool magicianDisappeared;
+        public bool metAduoForp;
+        public bool pongComplete;
+
     }
 
-    public void Save()
+    public static void Save()
     {
-
         gameState = PlayerAttributes.BossesDefeated;
         scene = PlayerAttributes.CurrentScene;
         level = PlayerAttributes.PlayerLevel;
@@ -65,6 +85,16 @@ public class InitializeGame : MonoBehaviour
         playerSpeed = PlayerAttributes.PlayerSpeed;
         playerDefence = PlayerAttributes.PlayerDefence;
         playerDamage = PlayerAttributes.PlayerDamage;
+        playerColor = PlayerAttributes.PlayerColor;
+        
+        // flags for dialog triggers
+        startScene = PlayerAttributes.StartScene;
+        golemComplete = PlayerAttributes.GolemComplete;
+        kongComplete = PlayerAttributes.KongComplete;
+        hornCollected = PlayerAttributes.HornCollected;
+        magicianDisappeared = PlayerAttributes.MagicianDisappeared;
+        metAduoForp = PlayerAttributes.MetAduoForp;
+        pongComplete = PlayerAttributes.PongComplete;
 
 
         SaveObject saveObject = new SaveObject
@@ -76,21 +106,26 @@ public class InitializeGame : MonoBehaviour
             playerHealth = playerHealth,
             playerSpeed = playerSpeed,
             playerDefence = playerDefence,
-            playerDamage = playerDamage
+            playerDamage = playerDamage,
+            playerColor = playerColor,
+            startScene = startScene,
+            golemComplete = golemComplete,
+            kongComplete = kongComplete,
+            hornCollected = hornCollected,
+            magicianDisappeared = magicianDisappeared,
+            metAduoForp = metAduoForp,
+            pongComplete = pongComplete,
         };
 
         string json = JsonUtility.ToJson(saveObject);
 
         File.WriteAllText(Application.dataPath + "/save.txt", json);
-
-
     }
 
-    public void Load()
+    public static void Load()
     {
         if (File.Exists(Application.dataPath + "/save.txt"))
         {
-
             print("loading from file...");
 
             string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
@@ -106,14 +141,20 @@ public class InitializeGame : MonoBehaviour
             PlayerAttributes.PlayerSpeed = saveObject.playerSpeed;
             PlayerAttributes.PlayerDefence = saveObject.playerDefence;
             PlayerAttributes.PlayerDamage = saveObject.playerDamage;
+            PlayerAttributes.PlayerColor = saveObject.playerColor;
 
-        } else
+            PlayerAttributes.StartScene = saveObject.startScene;
+            PlayerAttributes.GolemComplete = saveObject.golemComplete;
+            PlayerAttributes.KongComplete = saveObject.kongComplete;
+            PlayerAttributes.HornCollected = saveObject.hornCollected;
+            PlayerAttributes.MagicianDisappeared = saveObject.magicianDisappeared;
+            PlayerAttributes.MetAduoForp = saveObject.metAduoForp;
+            PlayerAttributes.PongComplete = saveObject.pongComplete;
+        }
+        else
         {
             print("loading from defaults");
             PlayerAttributes.InitializeAttributes();
         }
-
-
     }
-
 }

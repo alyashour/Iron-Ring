@@ -1,24 +1,28 @@
-using Global.Portal_Pack;
+using System;
+using Global.Portals;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class DoorBehaviour : MonoBehaviour
+namespace Global
 {
-    [SerializeField] private string sceneName; // the scene the door loads
-    [SerializeField] private Vector2 position; // the position in the new scene to load the player into
-    private PlayerTeleporter _playerTeleporter;
-    
-    // Start is called before the first frame update
-    void Start()
+    public class DoorBehaviour : MonoBehaviour
     {
-        _playerTeleporter = gameObject.AddComponent<PlayerTeleporter>();
-    }
+        [SerializeField] private string sceneName; // the scene the door loads
+        [SerializeField] private Vector2 position; // the position in the new scene to load the player into
+        private TeleportManager _playerTeleporter;
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        var player = other.gameObject;
-        if (other.gameObject.name == "Player")
+        private void Start()
         {
-            _playerTeleporter.TeleportAcrossScenes(player, sceneName, position);
+            _playerTeleporter = TeleportManager.Instance;
+        }
+
+        void OnCollisionEnter2D(Collision2D other)
+        {
+            var player = other.gameObject;
+            if (other.gameObject.name == "Player")
+            {
+                _playerTeleporter.TeleportAcrossScenes(player, sceneName, position);
+            }
         }
     }
 }

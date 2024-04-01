@@ -32,7 +32,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void Start()
     {
         // Assigns the player reference
-        player = GameObject.Find("Player");        
+        player = GameObject.Find("Player");
     }
 
     private void Update()

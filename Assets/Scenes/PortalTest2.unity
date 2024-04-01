@@ -250,11 +250,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7432878245813900326, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
       propertyPath: destinationSceneName
-      value: 
+      value: PortalTest1
       objectReference: {fileID: 0}
     - target: {fileID: 7432878245813900326, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
       propertyPath: teleportAcrossScenes
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7432878245813900326, guid: 99524ad03e5104c8cbad8e5d8d6c6cf9, type: 3}
       propertyPath: destinationPortalName
