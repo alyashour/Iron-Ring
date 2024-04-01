@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Library.unity
     guid: f7020615136ea41d19f1305daddb7296
+  - enabled: 1
+    path: Assets/Scenes/Aduo Forp.unity
+    guid: cefb5b54f51b7184cbe941a5f3f9cad3
   m_configObjects: {}

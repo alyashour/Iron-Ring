@@ -15709,7 +15709,7 @@ MonoBehaviour:
   enemyHealthBarPrefab: {fileID: 3129416824600834654, guid: 4fd74c390f88849f19cca7702741e2e8, type: 3}
   player: {fileID: 857300350}
   enemyHealth: 500
-  enemyDamage: 10
+  enemyDamage: 2
   enemySpeed: 0.25
   enemyKnockBack: 0
   lightningInstance: {fileID: 5141191210683780966, guid: 712996a385c21b546838f87d7cc99189, type: 3}

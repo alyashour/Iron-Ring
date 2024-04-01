@@ -22,28 +22,40 @@ public class SceneInitialization : MonoBehaviour
     private float currentCamSize;
     private float t = 0;
 
+    private RingBossBehaviour bossb;
+
     private void Start()
     {
         Door.SetActive(false);
+        bossb = GameObject.Find("RingBoss").GetComponent<RingBossBehaviour>();
     }
 
     private void Update()
     {
+        // Walking up hallway
         if (player.transform.position.y > -5 && sceneState == 0)
         {
             sceneState = 1;
         }
 
-        if (player.transform.position.y > doorYValue && sceneState == 1)
+        // In arena
+        if (sceneState == 1)
         {
-            Door.SetActive(true);
-        }
-
-        // If they are near the boss
-        if (sceneState == 1 && player.transform.position.y > 6.5)
-        {
-            sceneState = 2;
-            Instantiate(healthBarDisplay, GameObject.Find("Player").transform);
+            if (player.transform.position.y > doorYValue)
+            {
+                Door.SetActive(true);
+            }
+            // If they are near the boss
+            float dist = (player.transform.position - bossb.transform.position).magnitude;
+            if (dist < 6.1f)
+            {
+                sceneState = 2;
+                Instantiate(healthBarDisplay, GameObject.Find("Player").transform);
+            }
+            if (bossb.enemyHealth <= 0)
+            {
+                sceneState = 3;
+            }
         }
 
         if (sceneState >= 1 && currentCamSize < (originalSize * zoomFactor))
