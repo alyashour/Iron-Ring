@@ -6,12 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/PortalTest2.unity
-    guid: af822a2bc60ba44b2b00e9cd0a05ead0
-  - enabled: 1
-    path: Assets/Scenes/PortalTest1.unity
-    guid: 21b5c49ecd9af49f4a753f02ece9d423
-  - enabled: 1
     path: Assets/Scenes/KongPreload.unity
     guid: e89ceb518b03a484b80b41d24964af90
   - enabled: 1
@@ -32,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Forest.unity
     guid: f2430f3544c590148b8a87d524bea037
+  - enabled: 1
+    path: Assets/Scenes/Library.unity
+    guid: f7020615136ea41d19f1305daddb7296
   - enabled: 1
     path: Assets/Scenes/Aduo Forp.unity
     guid: cefb5b54f51b7184cbe941a5f3f9cad3

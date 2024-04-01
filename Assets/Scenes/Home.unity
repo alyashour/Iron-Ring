@@ -2126,11 +2126,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7480527756016608360, guid: 5e18d9c5013a74cf6b91806fd9320b41, type: 3}
       propertyPath: position.x
-      value: 16.5
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 7480527756016608360, guid: 5e18d9c5013a74cf6b91806fd9320b41, type: 3}
       propertyPath: position.y
-      value: 2.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7480527756016608360, guid: 5e18d9c5013a74cf6b91806fd9320b41, type: 3}
       propertyPath: playerTeleporter
