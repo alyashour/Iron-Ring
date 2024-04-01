@@ -51,6 +51,17 @@ namespace Global
             obj.transform.position = destination;
         }
 
+        /**
+         * For teleporting when there is no player in the current scene or when the player is dead
+         */
+        public void TeleportAcrossScenes(string destinationSceneName, Vector2 position)
+        {
+            StartCoroutine(LoadSceneAsync(destinationSceneName, position, null));
+        }
+
+        /**
+         * For teleporting to a specific position in a scene
+         */
         public void TeleportAcrossScenes(GameObject player, string destinationSceneName, Vector2 position)
         {
             PlayerState playerState = GetObjectState(player);
@@ -59,6 +70,9 @@ namespace Global
             StartCoroutine(LoadSceneAsync(destinationSceneName, position, playerState));
         }
 
+        /**
+         * For portal teleportation
+         */
         public void TeleportAcrossScenes(GameObject player, string destinationSceneName, string destinationPortalName)
         {
             // teleport to 0, 0 first
@@ -93,11 +107,12 @@ namespace Global
             // Restore the playerObj from state
         }
 
+        /**
+         * Scene loader
+         * PlayerState may be null. 
+         */
         private IEnumerator LoadSceneAsync(string sceneName, Vector2 position, PlayerState playerState)
         {
-            // get a ref to the old scene
-            Scene oldScene = SceneManager.GetActiveScene();
-            
             // load the new scene
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
 
@@ -119,8 +134,10 @@ namespace Global
             
             // teleport player to position
             player.transform.position = position;
+            
             // update player info
-            RestoreObjectState(player, playerState);
+            if (playerState != null)
+                RestoreObjectState(player, playerState);
         }
     }
 }
