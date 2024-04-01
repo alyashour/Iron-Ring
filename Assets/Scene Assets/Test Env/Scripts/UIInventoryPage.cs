@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Inventory.UI;
 using UnityEngine.UI;
 using Unity.Mathematics;
 using UnityEngine;
@@ -11,7 +12,15 @@ public class UIInventoryPage : MonoBehaviour
 
     [SerializeField] private RectTransform contentPanel;
 
+    [SerializeField] private UIInventoryDescription itemDiscription;
+
     private List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
+
+    private void Awake()
+    {
+        Hide();
+        itemDiscription.ResetDescription();
+    }
 
     public void InitializeInventoryUI(int inventorysize)
     {
@@ -57,6 +66,7 @@ public class UIInventoryPage : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
+        itemDiscription.ResetDescription();
     }
 
     public void Hide()

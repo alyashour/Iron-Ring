@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 4557528976925320257}
   - component: {fileID: 1660650027996347657}
   - component: {fileID: 2686728761970907542}
+  - component: {fileID: 1047479742585900667}
   m_Layer: 5
   m_Name: InventoryDescription
   m_TagString: Untagged
@@ -397,6 +398,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1047479742585900667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304731592646941069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9216a1960b2fe64c8db67b14507e965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: 1503516577567596713}
+  title: {fileID: 2337822440821633652}
+  description: {fileID: 406952425793694097}
 --- !u!1 &2987902262345104659
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +666,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 279453468199525325}
   m_HandleRect: {fileID: 5073414331757479533}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -903,10 +919,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4721627596930540746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 70, y: 70}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1207534349929390219
 CanvasRenderer:
@@ -1173,6 +1189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 0}
   contentPanel: {fileID: 4458746467802817690}
+  itemDiscription: {fileID: 0}
 --- !u!1 &6800849962512206361
 GameObject:
   m_ObjectHideFlags: 0
