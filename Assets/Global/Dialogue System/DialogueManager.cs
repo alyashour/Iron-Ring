@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
@@ -20,6 +21,17 @@ public class DialogueManager : MonoBehaviour
     {
         names = new Queue<string>();
         sentences = new Queue<string>();
+
+        // Check if an EventSystem already exists in the scene
+        EventSystem existingEventSystem = FindObjectOfType<EventSystem>();
+
+        // If no EventSystem exists, create one
+        if (existingEventSystem == null)
+        {
+            GameObject eventSystemObject = new GameObject("EventSystem");
+            eventSystemObject.AddComponent<EventSystem>();
+            eventSystemObject.AddComponent<StandaloneInputModule>();
+        }
     }
 
     public void StartDialogue(Dialogue dialogue)
