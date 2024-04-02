@@ -12,6 +12,7 @@ TagManager:
   - Ladder
   - Platform
   - Enemy
+  - PopUp
   layers:
   - Default
   - TransparentFX
