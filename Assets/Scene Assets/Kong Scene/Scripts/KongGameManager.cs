@@ -11,6 +11,9 @@ public class KongGameManager : MonoBehaviour
     private string currentScene;
     public static KongGameManager instance;
     public static GameOverHUDBehaviour gameOverHUD;
+    public Canvas tiePopup;
+    public float popupDuration = 3f;
+    public PopupManager popupManager;
 
     private void Awake()
     {
@@ -23,10 +26,20 @@ public class KongGameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+ 
+    
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         KongNewGame();
+        if (tiePopup == null)
+        {
+            Debug.LogError("Tie popup not assigned in the Inspector.");
+        }
+        else { Debug.Log("Tie assigned");
+                Debug.Log(tiePopup.gameObject.name);
+        }
+        Debug.Log("Hi");
     }
 
     private void KongNewGame()
@@ -61,7 +74,8 @@ public class KongGameManager : MonoBehaviour
         {
             case "KongScene":
                 Debug.Log("Yo");
-                LoadKongLevel("Forest");
+                // LoadKongLevel("Forest");
+                ShowTiePopup();
                 break;
             default:
                 LoadKongLevel("KongScene");
@@ -79,6 +93,20 @@ public class KongGameManager : MonoBehaviour
         {
             LoadKongLevel(currentScene);
         }
+    }
+
+    public void ShowTiePopup()
+    {
+        Debug.Log("SHowing tie");
+        popupManager.ShowTiePopup();
+        StartCoroutine(HidePopupAndLoadScene(popupDuration, "Forest"));
+    }
+    IEnumerator HidePopupAndLoadScene(float duration, string sceneName)
+    {
+        yield return new WaitForSeconds(duration);
+        Debug.Log("Hiding Tie");
+        popupManager.HideTiePopup();
+        LoadKongLevel(sceneName);
     }
 
 
