@@ -79,6 +79,11 @@ public class KongGameManager : MonoBehaviour
     public void KongLevelComplete()
     {
         kongLevelWon = true;
+        PlayerAttributes.KongComplete = true;
+        InitializeGame.Save();
+        SceneManager.LoadScene("Forest");
+        
+        /*
         switch (currentScene)
         {
             case "KongScene":
@@ -90,6 +95,7 @@ public class KongGameManager : MonoBehaviour
                 LoadKongLevel("KongScene");
                 break;
         }
+        */
     }
     public void KongLevelFailed()
     {
