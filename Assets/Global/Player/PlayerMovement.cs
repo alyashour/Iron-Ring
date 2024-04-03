@@ -76,6 +76,7 @@ namespace Global.Player
                 if (_dialogueManager.isOpen)
                 {
                     dialogueOpen = true;
+                    _rb.velocity = Vector3.zero;
                     _animator.enabled = false;
                 } else
                 {
