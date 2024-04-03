@@ -2,6 +2,7 @@ using Global.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Player behaviour for when they're hit
 // Author: Aiden
@@ -88,6 +89,15 @@ public class PlayerHitBehaviour : MonoBehaviour
         _player.GetComponent<PlayerMovement>().lockMovement = true;
 
         Vector3 dir = transform.position - o.transform.position;
-        _rb.velocity = dir.normalized * PlayerAttributes.PlayerKnockback;
+
+        if (SceneManager.GetActiveScene().Equals("GolemBoss")) {
+            _rb.velocity = dir.normalized * 5f;
+        } else
+        {
+            _rb.velocity = dir.normalized * PlayerAttributes.PlayerKnockback;
+        }
+
+
+        
     }
 }
