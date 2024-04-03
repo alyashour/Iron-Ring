@@ -52,7 +52,7 @@ public class PlayerHitBehaviour : MonoBehaviour
 
         if (timeSinceHit > 0.1f)
         {
-            _spriteRenderer.color = Color.white;
+            _spriteRenderer.color = PlayerAttributes.PlayerColor;
         }
     }
 
@@ -90,14 +90,11 @@ public class PlayerHitBehaviour : MonoBehaviour
 
         Vector3 dir = transform.position - o.transform.position;
 
-        if (SceneManager.GetActiveScene().Equals("GolemBoss")) {
+        if (o.name == "Golem Boss") {
             _rb.velocity = dir.normalized * 5f;
         } else
         {
             _rb.velocity = dir.normalized * PlayerAttributes.PlayerKnockback;
         }
-
-
-        
     }
 }

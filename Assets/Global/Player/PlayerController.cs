@@ -15,6 +15,8 @@ namespace Global.Player
         {
             _attackBehaviour = gameObject.GetComponent<AttackBehaviour>();
             _playerMovement = gameObject.GetComponent<PlayerMovement>();
+
+            gameObject.GetComponent<SpriteRenderer>().color = PlayerAttributes.PlayerColor;
         }
 
         private void OnFire(InputValue inputValue)

@@ -116,6 +116,9 @@ namespace Global
             // load the new scene
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
 
+            // ------- Saves the game before the scene is swapped ---------
+            InitializeGame.Save(sceneName);
+
             // wait until its done
             while (!asyncLoad.isDone)
             {
