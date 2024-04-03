@@ -47,15 +47,6 @@ public class InitializeGame : MonoBehaviour
         Load();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Save();
-            print("testing save!");
-        }
-    }
-
     private class SaveObject
     {
         public int gameState;

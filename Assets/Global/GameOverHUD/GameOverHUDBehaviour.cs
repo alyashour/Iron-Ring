@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -65,7 +64,7 @@ public class GameOverHUDBehaviour : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        SceneManager.LoadScene("Main Menu");
     }
 
     private void GetEventSys()
@@ -74,6 +73,5 @@ public class GameOverHUDBehaviour : MonoBehaviour
         {
             Instantiate(eventSysPrefab);
         }
-
     }
 }
