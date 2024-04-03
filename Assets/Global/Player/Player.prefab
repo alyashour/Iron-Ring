@@ -326,7 +326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbb5a043a41a5d4abf3ac021ce9fb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.75
   playerDirection: 0
   lockMovement: 0
   attackCooldown: 0.3
@@ -395,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
-  inventoryData: {fileID: 0}
+  inventoryData: {fileID: 11400000, guid: e8f368e062008e84090e973216a4a206, type: 2}
   initialItems:
   - quantity: 0
     item: {fileID: 0}

@@ -8,11 +8,13 @@ public class VillageInitializer : MonoBehaviour
     void Start()
     {
         // trigger start scene dialogue if it hasn't been shown yet
-        if (!PlayerAttributes.StartScene)
+        /*if (!PlayerAttributes.StartScene)
         {
             FindObjectOfType<DialogueTrigger>().TriggerDialogue();
             PlayerAttributes.StartScene = true;
-        }
+        }*/
+
+        FindObjectOfType<DialogueTrigger>().TriggerDialogue();
     }
 
     // Update is called once per frame
