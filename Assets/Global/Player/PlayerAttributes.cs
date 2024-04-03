@@ -48,7 +48,7 @@ public class PlayerAttributes : MonoBehaviour
         PlayerDefence = 0;
         PlayerDamage = 10;
 
-        PlayerKnockback = 10;
+        PlayerKnockback = 20;
 
         CurrentScene = "Village";
 

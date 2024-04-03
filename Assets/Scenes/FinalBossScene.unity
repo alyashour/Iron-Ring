@@ -2240,7 +2240,7 @@ MonoBehaviour:
   sr: {fileID: 1280156407}
   particlePrefab: {fileID: 2991474116490787974, guid: 8c849a63d98e0314fb3819603d0b66a0, type: 3}
   ringDropPrefab: {fileID: 3417503825641823064, guid: 288faf1bedfe18044a770003f8f61fa8, type: 3}
-  enemyHealth: 5
+  enemyHealth: 500
   enemyDamage: 5
 --- !u!50 &1280156411
 Rigidbody2D:
