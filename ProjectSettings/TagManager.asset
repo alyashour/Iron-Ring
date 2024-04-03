@@ -12,6 +12,8 @@ TagManager:
   - Ladder
   - Platform
   - Enemy
+  - PopUp
+  - HUD
   layers:
   - Default
   - TransparentFX

@@ -27,6 +27,8 @@ public class InitializeGame : MonoBehaviour
     private static float playerDefence;
     private static float playerDamage;
 
+    private static bool playerAlive;
+
     // Player color
     private static Color playerColor;
 
@@ -39,7 +41,7 @@ public class InitializeGame : MonoBehaviour
     private static bool metAduoForp;
     private static bool pongComplete;
 
-    private void Start()
+    private void Awake()
     {
         Load();
     }
@@ -64,6 +66,7 @@ public class InitializeGame : MonoBehaviour
         public float playerDefence;
         public float playerDamage;
         public Color playerColor;
+        public bool playerAlive;
         
         public bool startScene;
         public bool golemComplete;
@@ -77,7 +80,7 @@ public class InitializeGame : MonoBehaviour
 
     public static void Save()
     {
-        gameState = PlayerAttributes.BossesDefeated;
+        gameState = PlayerAttributes.GameStateA;
         scene = PlayerAttributes.CurrentScene;
         level = PlayerAttributes.PlayerLevel;
         xp = PlayerAttributes.PlayerXP;
@@ -86,6 +89,7 @@ public class InitializeGame : MonoBehaviour
         playerDefence = PlayerAttributes.PlayerDefence;
         playerDamage = PlayerAttributes.PlayerDamage;
         playerColor = PlayerAttributes.PlayerColor;
+        playerAlive = PlayerAttributes.Alive;
         
         // flags for dialog triggers
         startScene = PlayerAttributes.StartScene;
@@ -95,7 +99,6 @@ public class InitializeGame : MonoBehaviour
         magicianDisappeared = PlayerAttributes.MagicianDisappeared;
         metAduoForp = PlayerAttributes.MetAduoForp;
         pongComplete = PlayerAttributes.PongComplete;
-
 
         SaveObject saveObject = new SaveObject
         {
@@ -108,6 +111,8 @@ public class InitializeGame : MonoBehaviour
             playerDefence = playerDefence,
             playerDamage = playerDamage,
             playerColor = playerColor,
+            playerAlive = playerAlive,
+
             startScene = startScene,
             golemComplete = golemComplete,
             kongComplete = kongComplete,
@@ -118,7 +123,53 @@ public class InitializeGame : MonoBehaviour
         };
 
         string json = JsonUtility.ToJson(saveObject);
+        File.WriteAllText(Application.dataPath + "/save.txt", json);
+    }
+    public static void Save(string nextScene)
+    {
+        gameState = PlayerAttributes.GameStateA;
+        scene = nextScene;
+        level = PlayerAttributes.PlayerLevel;
+        xp = PlayerAttributes.PlayerXP;
+        playerHealth = PlayerAttributes.PlayerHealth;
+        playerSpeed = PlayerAttributes.PlayerSpeed;
+        playerDefence = PlayerAttributes.PlayerDefence;
+        playerDamage = PlayerAttributes.PlayerDamage;
+        playerColor = PlayerAttributes.PlayerColor;
+        playerAlive = PlayerAttributes.Alive;
 
+        // flags for dialog triggers
+        startScene = PlayerAttributes.StartScene;
+        golemComplete = PlayerAttributes.GolemComplete;
+        kongComplete = PlayerAttributes.KongComplete;
+        hornCollected = PlayerAttributes.HornCollected;
+        magicianDisappeared = PlayerAttributes.MagicianDisappeared;
+        metAduoForp = PlayerAttributes.MetAduoForp;
+        pongComplete = PlayerAttributes.PongComplete;
+
+        SaveObject saveObject = new SaveObject
+        {
+            gameState = gameState,
+            scene = scene,
+            level = level,
+            xp = xp,
+            playerHealth = playerHealth,
+            playerSpeed = playerSpeed,
+            playerDefence = playerDefence,
+            playerDamage = playerDamage,
+            playerColor = playerColor,
+            playerAlive = playerAlive,
+
+            startScene = startScene,
+            golemComplete = golemComplete,
+            kongComplete = kongComplete,
+            hornCollected = hornCollected,
+            magicianDisappeared = magicianDisappeared,
+            metAduoForp = metAduoForp,
+            pongComplete = pongComplete,
+        };
+
+        string json = JsonUtility.ToJson(saveObject);
         File.WriteAllText(Application.dataPath + "/save.txt", json);
     }
 
@@ -133,7 +184,7 @@ public class InitializeGame : MonoBehaviour
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
 
             // Assigns the attributes
-            PlayerAttributes.BossesDefeated = saveObject.gameState;
+            PlayerAttributes.GameStateA = saveObject.gameState;
             PlayerAttributes.CurrentScene = saveObject.scene;
             PlayerAttributes.PlayerLevel = saveObject.level;
             PlayerAttributes.PlayerXP = saveObject.xp;
@@ -142,6 +193,7 @@ public class InitializeGame : MonoBehaviour
             PlayerAttributes.PlayerDefence = saveObject.playerDefence;
             PlayerAttributes.PlayerDamage = saveObject.playerDamage;
             PlayerAttributes.PlayerColor = saveObject.playerColor;
+            PlayerAttributes.Alive = saveObject.playerAlive;
 
             PlayerAttributes.StartScene = saveObject.startScene;
             PlayerAttributes.GolemComplete = saveObject.golemComplete;

@@ -22,9 +22,6 @@ namespace Global.Player
         // Place holder struct ref used in smooth dampening
         private Vector2 _movementInputSmoothedVelocity;
 
-        // The player speed
-        [SerializeField] private float speed = 1.75f;
-
         // The amount of time it takes to smooth the movement (basically how slippy the movement feels)
         private const float SmoothTime = 0.05f;
 
@@ -33,6 +30,9 @@ namespace Global.Player
         public AttackBehaviour.PlayerDirection playerDirection;
 
         public bool lockMovement = false;
+
+        private DialogueManager _dialogueManager;
+        private bool dialogueOpen = false;
 
         // todo: make this value influence the animation speed!
         [SerializeField] private float attackCooldown = 0.3f; // in seconds
@@ -59,14 +59,34 @@ namespace Global.Player
             _animator = gameObject.GetComponent<Animator>();
             _rb = gameObject.GetComponent<Rigidbody2D>();
             _attackBehaviour = GameObject.Find("SwordHitbox").GetComponent<AttackBehaviour>();
+            GameObject manager = GameObject.Find("DialogueManager");
+            if (manager != null)
+            {
+                _dialogueManager = manager.GetComponent<DialogueManager>();
+            }
         }
         
         private void FixedUpdate()
         {
+            if (_dialogueManager != null)
+            {
+                if (_dialogueManager.isOpen)
+                {
+                    dialogueOpen = true;
+                    _rb.velocity = Vector3.zero;
+                    _animator.enabled = false;
+                } else
+                {
+                    dialogueOpen = false;
+                    _animator.enabled = true;
+                }
+            }
+
             // Can't move if you're dead
             if (PlayerAttributes.Alive)
             {
-                if (!lockMovement)
+
+                if (!lockMovement && !dialogueOpen)
                 {
                     // Moves the player
                     Move();
@@ -117,7 +137,7 @@ namespace Global.Player
             );
             
             // calculate and update velocity
-            _rb.velocity = _smoothedMovementInput * speed;
+            _rb.velocity = _smoothedMovementInput * PlayerAttributes.PlayerSpeed;
             
             // update animator
             _animator.SetFloat("hSpeed", _rb.velocity.x);
@@ -136,6 +156,12 @@ namespace Global.Player
                 playerDirection = _rb.velocity.y > 0 ? // if value is positive,
                     AttackBehaviour.PlayerDirection.Up : AttackBehaviour.PlayerDirection.Down; // up else down
             } // else dont do anything
+
+            if (!(_movementInput.magnitude < 0.05f))
+            {
+                var flip = _movementInput.x < 0;
+                gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, flip ? 180f : 0f));
+            }
         }
 
         // Gets the user input to update the player movement vector
@@ -155,15 +181,9 @@ namespace Global.Player
                 {
                     // the player is moving
                     _animator.SetBool("isMoving", true);
-
-                    var flip = newMovementInput.x < 0;
-
-                    gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, flip ? 180f : 0f));
                 }
-
                 _movementInput = newMovementInput;
             }
-            
         }
 
         private void OnFire(InputValue inputValue)

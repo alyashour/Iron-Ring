@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
@@ -15,16 +16,30 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> names;
     private Queue<string> sentences;
 
+    public bool isOpen;
+
     // Start is called before the first frame update
     void Start()
     {
         names = new Queue<string>();
         sentences = new Queue<string>();
+
+        // Check if an EventSystem already exists in the scene
+        EventSystem existingEventSystem = FindObjectOfType<EventSystem>();
+
+        // If no EventSystem exists, create one
+        if (existingEventSystem == null)
+        {
+            GameObject eventSystemObject = new GameObject("EventSystem");
+            eventSystemObject.AddComponent<EventSystem>();
+            eventSystemObject.AddComponent<StandaloneInputModule>();
+        }
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
-        animator.SetBool("IsOpen", true);
+        isOpen = true;
+        animator.SetBool("IsOpen", isOpen);
 
         names.Clear();
         sentences.Clear();
@@ -69,6 +84,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        animator.SetBool("IsOpen", false);
+        isOpen = false;
+        animator.SetBool("IsOpen", isOpen);
     }
 }

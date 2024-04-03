@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Aduo Forp.unity
     guid: cefb5b54f51b7184cbe941a5f3f9cad3
+  - enabled: 1
+    path: Assets/Scenes/FinalBossScene.unity
+    guid: bc2fbe80863a14a4dba0bd24aca62651
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: aceb05f1c2ddb4fcd9a31af56fb09665
   m_configObjects: {}

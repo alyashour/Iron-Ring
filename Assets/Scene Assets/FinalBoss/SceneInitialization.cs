@@ -3,6 +3,7 @@ using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Author: Aiden
 
@@ -11,6 +12,8 @@ public class SceneInitialization : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject Door;
     [SerializeField] GameObject healthBarDisplay;
+
+    [SerializeField] GameObject gameWinPrefab;
 
     [SerializeField] float doorYValue;
 
@@ -69,5 +72,15 @@ public class SceneInitialization : MonoBehaviour
         {
             sceneState = -5;
         }
+
+        if (sceneState == 10)
+        {
+            Instantiate(gameWinPrefab);
+            if (GameObject.FindGameObjectsWithTag("HUD").Length > 0) {
+                GameObject.FindGameObjectsWithTag("HUD")[0].SetActive(false);
+            }
+            sceneState = 11;
+        }
     }
+    
 }

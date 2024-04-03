@@ -70,7 +70,7 @@ public class GameOverHUDBehaviour : MonoBehaviour
 
     private void GetEventSys()
     {
-        if (GameObject.Find("EventSystem") == null)
+        if (GameObject.Find("EventSystem") == null || GameObject.FindGameObjectsWithTag("EventSystem").Length == 0)
         {
             Instantiate(eventSysPrefab);
         }
