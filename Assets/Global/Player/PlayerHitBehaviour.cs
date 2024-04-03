@@ -69,12 +69,18 @@ public class PlayerHitBehaviour : MonoBehaviour
                 _collidedObject = collision.gameObject;
 
                 // Damage the player
-                PlayerAttributes.PlayerHealth -= damagePerHit;
+                if (collision.gameObject.name == "Golem Boss")
+                {
+                    PlayerAttributes.PlayerHealth -= 5;
+                } else
+                {
+                    PlayerAttributes.PlayerHealth -= damagePerHit;
+                }
+                
                 GetKnockback(_collidedObject);
 
                 // Update the hit time
                 lastHitTime = Time.time;
-
 
                 // Change the sprite colour
                 _spriteRenderer.color = Color.red;
@@ -91,10 +97,10 @@ public class PlayerHitBehaviour : MonoBehaviour
         Vector3 dir = transform.position - o.transform.position;
 
         if (o.name == "Golem Boss") {
-            _rb.velocity = dir.normalized * 5f;
+            _rb.velocity = dir.normalized * 100f * Time.deltaTime;
         } else
         {
-            _rb.velocity = dir.normalized * PlayerAttributes.PlayerKnockback;
+            _rb.velocity = dir.normalized * PlayerAttributes.PlayerKnockback * Time.deltaTime;
         }
     }
 }
