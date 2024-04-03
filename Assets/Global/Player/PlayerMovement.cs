@@ -22,9 +22,6 @@ namespace Global.Player
         // Place holder struct ref used in smooth dampening
         private Vector2 _movementInputSmoothedVelocity;
 
-        // The player speed
-        [SerializeField] private float speed = 1.75f;
-
         // The amount of time it takes to smooth the movement (basically how slippy the movement feels)
         private const float SmoothTime = 0.05f;
 
@@ -140,7 +137,7 @@ namespace Global.Player
             );
             
             // calculate and update velocity
-            _rb.velocity = _smoothedMovementInput * speed;
+            _rb.velocity = _smoothedMovementInput * PlayerAttributes.PlayerSpeed;
             
             // update animator
             _animator.SetFloat("hSpeed", _rb.velocity.x);

@@ -21,7 +21,7 @@ public class PlayerAttributes : MonoBehaviour
 
 
     // Game state related metrics
-    public static int BossesDefeated { get; set; }
+    public static int GameStateA { get; set; }
     public static string CurrentScene { get; set; }
 
     public static bool Alive {  get; set; }
@@ -50,14 +50,14 @@ public class PlayerAttributes : MonoBehaviour
 
         PlayerKnockback = 20;
 
-        CurrentScene = "Village";
+        CurrentScene = SceneManager.GetActiveScene().name;
 
         PlayerLevel = 0;
         PlayerXP = 0;
 
         Alive = true;
 
-        PlayerColor = Color.white;
+        PlayerColor = new Color(255, 255, 255, 1);
 
         StartScene = false;
         GolemComplete = false;
