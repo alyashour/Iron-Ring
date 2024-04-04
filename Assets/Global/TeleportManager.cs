@@ -75,26 +75,8 @@ namespace Global
          */
         public void TeleportAcrossScenes(GameObject player, string destinationSceneName, string destinationPortalName)
         {
-            // teleport to 0, 0 first
-            TeleportAcrossScenes(player, destinationSceneName, new Vector2(0, 0));
-            
-            // find the destination portal
-            GameObject portal = GameObject.Find(destinationPortalName);
-            if (portal == null)
-            {
-                portal = GameObject.FindGameObjectsWithTag(destinationPortalName)[0];
-            }
-
-            // if we couldn't find the portal
-            if (portal != null)
-            {
-                Vector2 destinationPosition = portal.transform.position;
-                TeleportInScene(player, destinationPosition);
-            }
-            else
-            {
-                Debug.LogError("Couldn't find destination portal");
-            }
+            PlayerState playerState = GetObjectState(player);
+            StartCoroutine(LoadSceneAsync(destinationSceneName, destinationPortalName, playerState));
         }
         
         private PlayerState GetObjectState(GameObject obj)
@@ -141,6 +123,46 @@ namespace Global
             
             // teleport player to position
             player.transform.position = position;
+            
+            // update player info
+            if (playerState != null)
+                RestoreObjectState(player, playerState);
+        }
+
+        private IEnumerator LoadSceneAsync(string sceneName, string portalName, PlayerState playerState)
+        {
+            // load the new scene
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+
+            // ------- Saves the game before the scene is swapped ---------
+            InitializeGame.Save(sceneName);
+
+            // wait until its done
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+
+            // set scene as active
+            Scene loadedScene = SceneManager.GetSceneByName(sceneName);
+            SceneManager.SetActiveScene(loadedScene);
+            
+            // get ref to player
+            GameObject player = GameObject.Find("Player");
+
+            if (player == null) 
+                Debug.Log("Couldn't find player in new scene!");
+            
+            // get ref to portal
+            GameObject portal = GameObject.Find(portalName);
+
+            if (portal == null)
+            {
+                Debug.Log("Couldn't find portal on scene");
+            }
+            
+            // teleport player to position
+            player.transform.position = portal.transform.position;
             
             // update player info
             if (playerState != null)
