@@ -126,7 +126,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03011406baf73466989e270abff862ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCaught: 0
+  throwerPrefab: {fileID: 5980775904132535483, guid: 4d6c974f3d5bb458f8f1683928f6ab17, type: 3}
+  directionBias: 0.4
   speedupMultiplier: 1.1
+  maxHandSpawnDelay: 0.1
+  catchPrepTime: 0.2
 --- !u!60 &2052244096243423679
 PolygonCollider2D:
   m_ObjectHideFlags: 0
