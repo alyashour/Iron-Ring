@@ -81,6 +81,8 @@ public class GolemBossBehaviour : MonoBehaviour
                 DestroyMiniGolems();
                 Destroy(gameObject, 0.25f);
                 Destroy(pathwayRocks, 0.25f);
+                PlayerAttributes.GlobalGameState = 2;
+                PlayerAttributes.GolemComplete = true;
             }
         }
        

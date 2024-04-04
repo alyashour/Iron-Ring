@@ -72,7 +72,7 @@ public class InitializeGame : MonoBehaviour
 
     public static void Save()
     {
-        gameState = PlayerAttributes.GameStateA;
+        gameState = PlayerAttributes.GlobalGameState;
         scene = PlayerAttributes.CurrentScene;
         level = PlayerAttributes.PlayerLevel;
         xp = PlayerAttributes.PlayerXP;
@@ -119,7 +119,7 @@ public class InitializeGame : MonoBehaviour
     }
     public static void Save(string nextScene)
     {
-        gameState = PlayerAttributes.GameStateA;
+        gameState = PlayerAttributes.GlobalGameState;
         scene = nextScene;
         level = PlayerAttributes.PlayerLevel;
         xp = PlayerAttributes.PlayerXP;
@@ -176,7 +176,7 @@ public class InitializeGame : MonoBehaviour
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
 
             // Assigns the attributes
-            PlayerAttributes.GameStateA = saveObject.gameState;
+            PlayerAttributes.GlobalGameState = saveObject.gameState;
             PlayerAttributes.CurrentScene = saveObject.scene;
             PlayerAttributes.PlayerLevel = saveObject.level;
             PlayerAttributes.PlayerXP = saveObject.xp;
