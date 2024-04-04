@@ -30,6 +30,8 @@ namespace Invenory.UI
 
         public void Awake()
         {
+            //itemImage = GetComponent<Image>();
+            //borderImage = GetComponent<Image>();
             ResetData();
             Deselect();
         }

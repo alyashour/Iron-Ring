@@ -39,6 +39,9 @@ public class PlayerAttributes : MonoBehaviour
     public static bool PongComplete { get; set; }
 
 
+    public static int NumOfFood { get; set; }
+
+
 
     // Assigns the initial values for the player attributes - only call at the very start of the game
     public static void InitializeAttributes()
@@ -67,5 +70,7 @@ public class PlayerAttributes : MonoBehaviour
         MagicianDisappeared = false;
         MetAduoForp = false;
         PongComplete = false;
+
+        NumOfFood = 5;
     }
 }

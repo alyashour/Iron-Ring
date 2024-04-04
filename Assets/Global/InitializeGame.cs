@@ -42,6 +42,8 @@ public class InitializeGame : MonoBehaviour
     private static bool metAduoForp;
     private static bool pongComplete;
 
+    private static int numOfFood;
+
     private void Awake()
     {
         Load();
@@ -68,6 +70,8 @@ public class InitializeGame : MonoBehaviour
         public bool metAduoForp;
         public bool pongComplete;
 
+        public int numOfFood;
+
     }
 
     public static void Save()
@@ -92,6 +96,8 @@ public class InitializeGame : MonoBehaviour
         metAduoForp = PlayerAttributes.MetAduoForp;
         pongComplete = PlayerAttributes.PongComplete;
 
+        numOfFood = PlayerAttributes.NumOfFood;
+
         SaveObject saveObject = new SaveObject
         {
             gameState = gameState,
@@ -112,6 +118,7 @@ public class InitializeGame : MonoBehaviour
             magicianDisappeared = magicianDisappeared,
             metAduoForp = metAduoForp,
             pongComplete = pongComplete,
+            numOfFood = numOfFood
         };
 
         string json = JsonUtility.ToJson(saveObject);
@@ -139,6 +146,8 @@ public class InitializeGame : MonoBehaviour
         metAduoForp = PlayerAttributes.MetAduoForp;
         pongComplete = PlayerAttributes.PongComplete;
 
+        numOfFood = PlayerAttributes.NumOfFood;
+
         SaveObject saveObject = new SaveObject
         {
             gameState = gameState,
@@ -159,6 +168,7 @@ public class InitializeGame : MonoBehaviour
             magicianDisappeared = magicianDisappeared,
             metAduoForp = metAduoForp,
             pongComplete = pongComplete,
+            numOfFood = numOfFood
         };
 
         string json = JsonUtility.ToJson(saveObject);
@@ -196,6 +206,8 @@ public class InitializeGame : MonoBehaviour
             PlayerAttributes.MagicianDisappeared = saveObject.magicianDisappeared;
             PlayerAttributes.MetAduoForp = saveObject.metAduoForp;
             PlayerAttributes.PongComplete = saveObject.pongComplete;
+
+            PlayerAttributes.NumOfFood = saveObject.numOfFood;
         }
         else
         {

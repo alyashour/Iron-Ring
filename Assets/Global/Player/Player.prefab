@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 2118767976085164390}
   - component: {fileID: 4322422205701971489}
   - component: {fileID: 3243971241011287313}
+  - component: {fileID: 8180320379631355106}
   - component: {fileID: 9210992753872522307}
   - component: {fileID: 4688485273304918329}
   m_Layer: 0
@@ -399,6 +400,20 @@ MonoBehaviour:
     itemState: []
   dropClip: {fileID: 0}
   audioSource: {fileID: 0}
+  itemSO: {fileID: 0}
+--- !u!114 &8180320379631355106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6923967991901825277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d4423c000f2c324ca40ffe614dd58ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryController: {fileID: 3243971241011287313}
 --- !u!114 &9210992753872522307
 MonoBehaviour:
   m_ObjectHideFlags: 0
