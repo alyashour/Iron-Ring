@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI; // This ensures Text refers to UnityEngine.UI.Text
 
 // Removed the problematic using directive
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text scoreText;    // Now clearly UnityEngine.UI.Text
     [SerializeField] private Text livesText;    // Now clearly UnityEngine.UI.Text
 
+    [SerializeField] GameObject gameOverHUD;
+
     private int ghostMultiplier = 1;
     private int lives = 3;
     private int score = 0;
@@ -22,8 +25,13 @@ public class GameManager : MonoBehaviour
     public int Lives => lives;
     public int Score => score;
 
+    public static bool Eaten = false;
+
     private void Awake()
     {
+        Instance = this;
+        Eaten = false;
+        /*
         if (Instance != null)
         {
             DestroyImmediate(gameObject);
@@ -33,6 +41,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        */
     }
 
     private void Start()
@@ -42,22 +51,24 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (lives <= 0 && Input.anyKeyDown)
         {
             NewGame();
         }
+        */
     }
 
     private void NewGame()
     {
-        SetScore(0);
+        //SetScore(0);
         SetLives(3);
         NewRound();
     }
 
     private void NewRound()
     {
-        gameOverText.enabled = false;
+        //gameOverText.enabled = false;
 
         foreach (Transform pellet in pellets)
         {
@@ -80,6 +91,7 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         gameOverText.enabled = true;
+        
 
         for (int i = 0; i < ghosts.Length; i++)
         {
@@ -91,19 +103,24 @@ public class GameManager : MonoBehaviour
 
     private void SetLives(int lives)
     {
-        this.lives = lives;
-        livesText.text = "Lives: " + lives.ToString();
+        //this.lives = lives;
+        //livesText.text = "Lives: " + lives.ToString();
     }
 
     private void SetScore(int score)
     {
-        this.score = score;
-        scoreText.text = score.ToString().PadLeft(2, '0');
+        //this.score = score;
+        //scoreText.text = score.ToString().PadLeft(2, '0');
     }
 
     public void PacmanEaten()
     {
-        pacman.DeathSequence();
+        //pacman.DeathSequence();
+        if (!Eaten)
+        {
+            Eaten = true;
+            Instantiate(gameOverHUD);
+        }
 
         SetLives(lives - 1);
 
@@ -132,8 +149,16 @@ public class GameManager : MonoBehaviour
 
         if (!HasRemainingPellets())
         {
-            pacman.gameObject.SetActive(false);
-            Invoke(nameof(NewRound), 3f);
+            //pacman.gameObject.SetActive(false);
+
+            // Win condition
+            PlayerAttributes.GlobalGameState = 4;
+            PlayerAttributes.PacComplete = true;
+            SceneManager.LoadScene("Village");
+            
+
+
+            //Invoke(nameof(NewRound), 3f);
         }
     }
 
