@@ -97,10 +97,10 @@ public class PlayerHitBehaviour : MonoBehaviour
         Vector3 dir = transform.position - o.transform.position;
 
         if (o.name == "Golem Boss") {
-            _rb.velocity = dir.normalized * 100f * Time.deltaTime;
+            _rb.velocity = dir.normalized * 100;
         } else
         {
-            _rb.velocity = dir.normalized * PlayerAttributes.PlayerKnockback * Time.deltaTime;
+            _rb.velocity = dir.normalized * PlayerAttributes.PlayerKnockback;
         }
     }
 }

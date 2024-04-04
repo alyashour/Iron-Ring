@@ -22,6 +22,8 @@ namespace Inventory
         [SerializeField] private AudioClip dropClip;
 
         [SerializeField] private AudioSource audioSource;
+
+        [SerializeField] ItemSO itemSO;
         private void Start()
         {
             PrepareUI();
