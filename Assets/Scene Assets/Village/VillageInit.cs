@@ -17,6 +17,7 @@ public class VillageInit : MonoBehaviour
     [SerializeField] GameObject BridgeRubble;
 
     [SerializeField] GameObject GolemSpawner;
+    [SerializeField] GameObject GolemDoor;
 
     private float t;
 
@@ -26,7 +27,6 @@ public class VillageInit : MonoBehaviour
         switch (state)
         {
             case 1:
-                Instantiate(GolemSpawner);
                 GolemPortal.SetActive(true);
                 TownHallDoor.enabled = false;
                 ForestDoor.enabled = false;
@@ -38,6 +38,7 @@ public class VillageInit : MonoBehaviour
                 break;
             case 2:
                 
+                GolemDoor.SetActive(false);
                 TownHallDoor.enabled = true;
                 ForestDoor.enabled = true;
                 BlackSmithDoor.enabled = false;
@@ -47,6 +48,7 @@ public class VillageInit : MonoBehaviour
                 BridgeRubble.SetActive(true);
                 break;
             case 3:
+                GolemDoor.SetActive(false);
                 GolemPortal.SetActive(false);
                 TownHallDoor.enabled = true;
                 ForestDoor.enabled = true;
@@ -57,6 +59,7 @@ public class VillageInit : MonoBehaviour
                 BridgeRubble.SetActive(true);
                 break;
             case 4:
+                GolemDoor.SetActive(false);
                 GolemPortal.SetActive(false);
                 TownHallDoor.enabled = true;
                 ForestDoor.enabled = true;
@@ -67,6 +70,7 @@ public class VillageInit : MonoBehaviour
                 BridgeRubble.SetActive(false);
                 break;
             case 5:
+                GolemDoor.SetActive(false);
                 GolemPortal.SetActive(false);
                 TownHallDoor.enabled = true;
                 ForestDoor.enabled = true;
@@ -77,6 +81,7 @@ public class VillageInit : MonoBehaviour
                 BridgeRubble.SetActive(false);
                 break;
             case 6:
+                GolemDoor.SetActive(false);
                 GolemPortal.SetActive(false);
                 TownHallDoor.enabled = true;
                 ForestDoor.enabled = true;
@@ -87,6 +92,7 @@ public class VillageInit : MonoBehaviour
                 BridgeRubble.SetActive(false);
                 break;
             default:
+                GolemDoor.SetActive(true);
                 GolemPortal.SetActive(true);
                 TownHallDoor.enabled = true;
                 ForestDoor.enabled = true;
@@ -102,6 +108,7 @@ public class VillageInit : MonoBehaviour
     {
         if (state == 2)
         {
+            
             GolemPortal.transform.localScale = Mathf.Lerp(1, 0, t) * new Vector3(0.3333333f, 0.3333333f, 0.3333333f);
             t += Time.deltaTime;
             if (GolemPortal.transform.localScale.magnitude == 0)
