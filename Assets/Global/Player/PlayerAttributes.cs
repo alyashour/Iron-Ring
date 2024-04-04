@@ -51,7 +51,7 @@ public class PlayerAttributes : MonoBehaviour
         PlayerDefence = 0;
         PlayerDamage = 10;
 
-        PlayerKnockback = 10;
+        PlayerKnockback = 2;
 
         CurrentScene = SceneManager.GetActiveScene().name;
         GlobalGameState = 0;

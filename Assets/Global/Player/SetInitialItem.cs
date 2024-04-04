@@ -10,9 +10,6 @@ public class SetInitialItem : MonoBehaviour
     private void Start()
     {
         Inventory.Model.InventoryItem a = inventoryController.initialItems[0];
-
-
-        print(PlayerAttributes.NumOfFood);
         a.quantity = PlayerAttributes.NumOfFood;
         inventoryController.initialItems[0] = a;
     }
