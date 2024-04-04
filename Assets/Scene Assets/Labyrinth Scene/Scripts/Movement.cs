@@ -48,8 +48,11 @@ public class Movement : MonoBehaviour
     {
         Vector2 position = rigidbody.position;
         Vector2 translation = direction * speed * speedMultiplier * Time.fixedDeltaTime;
-
-        rigidbody.MovePosition(position + translation);
+        if (!GameManager.Eaten)
+        {
+            rigidbody.MovePosition(position + translation);
+        }
+        
     }
 
     public void SetDirection(Vector2 direction, bool forced = false)

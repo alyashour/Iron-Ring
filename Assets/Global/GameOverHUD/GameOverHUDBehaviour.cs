@@ -58,12 +58,15 @@ public class GameOverHUDBehaviour : MonoBehaviour
     public void LoadLastSave()
     {
         InitializeGame.Load();
-        print(PlayerAttributes.CurrentScene);
+        //print(PlayerAttributes.CurrentScene);
         SceneManager.LoadScene(PlayerAttributes.CurrentScene);
     }
 
     public void QuitGame()
     {
+        // Set scene to village so they're not stuck in a boss fight?
+        //PlayerAttributes.CurrentScene = "Village";
+        InitializeGame.Save();
         SceneManager.LoadScene("Main Menu");
     }
 

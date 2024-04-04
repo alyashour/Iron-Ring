@@ -37,7 +37,7 @@ public class InitializeGame : MonoBehaviour
     private static bool startScene;
     private static bool golemComplete;
     private static bool kongComplete;
-    private static bool hornCollected;
+    private static bool pacComplete;
     private static bool magicianDisappeared;
     private static bool metAduoForp;
     private static bool pongComplete;
@@ -63,7 +63,7 @@ public class InitializeGame : MonoBehaviour
         public bool startScene;
         public bool golemComplete;
         public bool kongComplete;
-        public bool hornCollected;
+        public bool pacComplete;
         public bool magicianDisappeared;
         public bool metAduoForp;
         public bool pongComplete;
@@ -87,7 +87,7 @@ public class InitializeGame : MonoBehaviour
         startScene = PlayerAttributes.StartScene;
         golemComplete = PlayerAttributes.GolemComplete;
         kongComplete = PlayerAttributes.KongComplete;
-        hornCollected = PlayerAttributes.HornCollected;
+        pacComplete = PlayerAttributes.PacComplete;
         magicianDisappeared = PlayerAttributes.MagicianDisappeared;
         metAduoForp = PlayerAttributes.MetAduoForp;
         pongComplete = PlayerAttributes.PongComplete;
@@ -108,7 +108,7 @@ public class InitializeGame : MonoBehaviour
             startScene = startScene,
             golemComplete = golemComplete,
             kongComplete = kongComplete,
-            hornCollected = hornCollected,
+            pacComplete = pacComplete,
             magicianDisappeared = magicianDisappeared,
             metAduoForp = metAduoForp,
             pongComplete = pongComplete,
@@ -134,7 +134,7 @@ public class InitializeGame : MonoBehaviour
         startScene = PlayerAttributes.StartScene;
         golemComplete = PlayerAttributes.GolemComplete;
         kongComplete = PlayerAttributes.KongComplete;
-        hornCollected = PlayerAttributes.HornCollected;
+        pacComplete = PlayerAttributes.PacComplete;
         magicianDisappeared = PlayerAttributes.MagicianDisappeared;
         metAduoForp = PlayerAttributes.MetAduoForp;
         pongComplete = PlayerAttributes.PongComplete;
@@ -155,7 +155,7 @@ public class InitializeGame : MonoBehaviour
             startScene = startScene,
             golemComplete = golemComplete,
             kongComplete = kongComplete,
-            hornCollected = hornCollected,
+            pacComplete = pacComplete,
             magicianDisappeared = magicianDisappeared,
             metAduoForp = metAduoForp,
             pongComplete = pongComplete,
@@ -190,7 +190,7 @@ public class InitializeGame : MonoBehaviour
             PlayerAttributes.StartScene = saveObject.startScene;
             PlayerAttributes.GolemComplete = saveObject.golemComplete;
             PlayerAttributes.KongComplete = saveObject.kongComplete;
-            PlayerAttributes.HornCollected = saveObject.hornCollected;
+            PlayerAttributes.PacComplete = saveObject.pacComplete;
             PlayerAttributes.MagicianDisappeared = saveObject.magicianDisappeared;
             PlayerAttributes.MetAduoForp = saveObject.metAduoForp;
             PlayerAttributes.PongComplete = saveObject.pongComplete;
