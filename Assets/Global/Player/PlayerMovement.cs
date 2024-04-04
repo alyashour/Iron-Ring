@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /*
     Intended for use as a component on the player game object
@@ -137,7 +138,14 @@ namespace Global.Player
             );
             
             // calculate and update velocity
-            _rb.velocity = _smoothedMovementInput * PlayerAttributes.PlayerSpeed;
+            if (SceneManager.GetActiveScene().name == "Home")
+            {
+                _rb.velocity = _smoothedMovementInput * 0.5f;
+            } else
+            {
+                _rb.velocity = _smoothedMovementInput * PlayerAttributes.PlayerSpeed;
+            }
+            
             
             // update animator
             _animator.SetFloat("hSpeed", _rb.velocity.x);

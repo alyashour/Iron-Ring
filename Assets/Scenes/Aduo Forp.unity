@@ -11118,6 +11118,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: guru_aduo_forp
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 5c286909bb77b463fb9ad644390b38b6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 5c286909bb77b463fb9ad644390b38b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.968

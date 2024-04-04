@@ -33,7 +33,7 @@ public class PlayerAttributes : MonoBehaviour
     public static bool StartScene { get; set; }
     public static bool GolemComplete { get; set; }
     public static bool KongComplete { get; set; }
-    public static bool HornCollected { get; set; }
+    public static bool PacComplete { get; set; }
     public static bool MagicianDisappeared { get; set; }
     public static bool MetAduoForp { get; set; }
     public static bool PongComplete { get; set; }
@@ -63,7 +63,7 @@ public class PlayerAttributes : MonoBehaviour
         StartScene = false;
         GolemComplete = false;
         KongComplete = false;
-        HornCollected = false;
+        PacComplete = false;
         MagicianDisappeared = false;
         MetAduoForp = false;
         PongComplete = false;

@@ -46,7 +46,7 @@ public class Pacman : MonoBehaviour
         enabled = true;
         spriteRenderer.enabled = true;
         collider.enabled = true;
-        deathSequence.enabled = false;
+        //deathSequence.enabled = false;
         movement.ResetState();
         gameObject.SetActive(true);
     }
@@ -57,8 +57,8 @@ public class Pacman : MonoBehaviour
         spriteRenderer.enabled = false;
         collider.enabled = false;
         movement.enabled = false;
-        deathSequence.enabled = true;
-        deathSequence.Restart();
+        //deathSequence.enabled = true;
+        //deathSequence.Restart();
     }
 
 }
