@@ -175,6 +175,8 @@ public class InitializeGame : MonoBehaviour
 
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
 
+            PlayerAttributes.InitializeAttributes();
+
             // Assigns the attributes
             PlayerAttributes.GlobalGameState = saveObject.gameState;
             PlayerAttributes.CurrentScene = saveObject.scene;

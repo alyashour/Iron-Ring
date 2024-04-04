@@ -16,6 +16,8 @@ public class VillageInit : MonoBehaviour
     [SerializeField] GameObject ForestRubble;
     [SerializeField] GameObject BridgeRubble;
 
+    [SerializeField] GameObject GolemSpawner;
+
     private float t;
 
     private void Start()
@@ -24,6 +26,7 @@ public class VillageInit : MonoBehaviour
         switch (state)
         {
             case 1:
+                Instantiate(GolemSpawner);
                 GolemPortal.SetActive(true);
                 TownHallDoor.enabled = false;
                 ForestDoor.enabled = false;
