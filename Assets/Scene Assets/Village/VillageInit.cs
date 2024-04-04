@@ -30,6 +30,8 @@ public class VillageInit : MonoBehaviour
                 BlackSmithDoor.enabled = false;
                 AduoForpDoor.enabled = false;
                 LibraryDoor.enabled = false;
+                ForestRubble.SetActive(true);
+                BridgeRubble.SetActive(true);
                 break;
             case 2:
                 
@@ -38,6 +40,8 @@ public class VillageInit : MonoBehaviour
                 BlackSmithDoor.enabled = false;
                 AduoForpDoor.enabled = false;
                 LibraryDoor.enabled = false;
+                ForestRubble.SetActive(false);
+                BridgeRubble.SetActive(true);
                 break;
             case 3:
                 GolemPortal.SetActive(false);
@@ -46,6 +50,8 @@ public class VillageInit : MonoBehaviour
                 BlackSmithDoor.enabled = true;
                 AduoForpDoor.enabled = false;
                 LibraryDoor.enabled = false;
+                ForestRubble.SetActive(false);
+                BridgeRubble.SetActive(true);
                 break;
             case 4:
                 GolemPortal.SetActive(false);
@@ -54,6 +60,8 @@ public class VillageInit : MonoBehaviour
                 BlackSmithDoor.enabled = false;
                 AduoForpDoor.enabled = true;
                 LibraryDoor.enabled = false;
+                ForestRubble.SetActive(false);
+                BridgeRubble.SetActive(false);
                 break;
             case 5:
                 GolemPortal.SetActive(false);
@@ -62,6 +70,8 @@ public class VillageInit : MonoBehaviour
                 BlackSmithDoor.enabled = false;
                 AduoForpDoor.enabled = true;
                 LibraryDoor.enabled = false;
+                ForestRubble.SetActive(false);
+                BridgeRubble.SetActive(false);
                 break;
             case 6:
                 GolemPortal.SetActive(false);
@@ -70,6 +80,8 @@ public class VillageInit : MonoBehaviour
                 BlackSmithDoor.enabled = false;
                 AduoForpDoor.enabled = true;
                 LibraryDoor.enabled = true;
+                ForestRubble.SetActive(false);
+                BridgeRubble.SetActive(false);
                 break;
             default:
                 GolemPortal.SetActive(true);
@@ -78,6 +90,8 @@ public class VillageInit : MonoBehaviour
                 BlackSmithDoor.enabled = true;
                 AduoForpDoor.enabled = true;
                 LibraryDoor.enabled = true;
+                ForestRubble.SetActive(false);
+                BridgeRubble.SetActive(false);
                 break;
         }
     }
