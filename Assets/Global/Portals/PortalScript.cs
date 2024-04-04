@@ -44,6 +44,7 @@ namespace Global.Portals
                     other.gameObject, destinationSceneName, destinationPortalName
                 );
             }
+            
             // if we can teleport in the same scene
             else
             {
