@@ -102,7 +102,7 @@ public class AttackBehaviour : MonoBehaviour
         {
             try
             {
-                // Calls the OnHit method from the collided attackable object, passes the player position
+                // Calls the OnHit method from the collided attackable object, passes the player collider
                 other.SendMessage("OnHit", other);
                 StopAttack();
             }

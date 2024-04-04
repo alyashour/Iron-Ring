@@ -6,22 +6,15 @@ namespace Global.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        private AttackBehaviour _attackBehaviour;
         private PlayerMovement _playerMovement;
         [SerializeField] private float interactionDistance = 1f;
-
+        
         // Start is called before the first frame update
         void Start()
         {
-            _attackBehaviour = gameObject.GetComponent<AttackBehaviour>();
             _playerMovement = gameObject.GetComponent<PlayerMovement>();
 
             gameObject.GetComponent<SpriteRenderer>().color = PlayerAttributes.PlayerColor;
-        }
-
-        private void OnFire(InputValue inputValue)
-        {
-            //_attackBehaviour.Attack();
         }
 
         // when the player interacts with an object

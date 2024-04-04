@@ -12,6 +12,8 @@ TagManager:
   - Ladder
   - Platform
   - Enemy
+  - Hand
+  - Projectile
   - PopUp
   - HUD
   - Portal
