@@ -21,7 +21,7 @@ public class PlayerAttributes : MonoBehaviour
 
 
     // Game state related metrics
-    public static int GameStateA { get; set; }
+    public static int GlobalGameState { get; set; }
     public static string CurrentScene { get; set; }
 
     public static bool Alive {  get; set; }
@@ -51,6 +51,7 @@ public class PlayerAttributes : MonoBehaviour
         PlayerKnockback = 100;
 
         CurrentScene = SceneManager.GetActiveScene().name;
+        GlobalGameState = 0;
 
         PlayerLevel = 0;
         PlayerXP = 0;

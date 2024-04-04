@@ -80,6 +80,10 @@ namespace Global
             
             // find the destination portal
             GameObject portal = GameObject.Find(destinationPortalName);
+            if (portal == null)
+            {
+                portal = GameObject.FindGameObjectsWithTag(destinationPortalName)[0];
+            }
 
             // if we couldn't find the portal
             if (portal != null)
