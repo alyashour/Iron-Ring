@@ -1,3 +1,4 @@
+using Global.Dialogue_System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

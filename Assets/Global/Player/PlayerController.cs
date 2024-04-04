@@ -48,8 +48,10 @@ namespace Global.Player
 
             if (hit.collider != null)
             {
-                IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-                interactable.Interact();
+                var interactable = hit.collider.GetComponent<IInteractable>();
+                
+                if (interactable != null)
+                    interactable.Interact();
             }
         }
     }
