@@ -49,6 +49,8 @@ namespace Scene_Assets.Home_Scene
             // update the color
             var color = new Color(_red, _green, _blue);
             playerObj.GetComponent<SpriteRenderer>().color = color;
+            
+            PlayerAttributes.PlayerColor = color;
 
             CloseMenu();
         }

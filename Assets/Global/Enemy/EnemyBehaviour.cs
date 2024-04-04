@@ -100,7 +100,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void GetKnockback()
     {
         Vector3 direction = player.transform.position - transform.position;
-        rb.velocity = -direction.normalized * enemyKnockBack;
+        rb.velocity = -direction.normalized * enemyKnockBack * Time.deltaTime;
     }
 
 }

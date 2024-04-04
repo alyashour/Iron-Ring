@@ -19,6 +19,8 @@ public class KongPlayer : MonoBehaviour
     private bool grounded;
     private bool climbing;
 
+    private bool hasBeenHit = false;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -54,10 +56,11 @@ public class KongPlayer : MonoBehaviour
             enabled = false;
             FindObjectOfType<KongGameManager>().KongLevelComplete();
         } 
-        else if (collision.gameObject.CompareTag("Obstacle"))
+        else if (collision.gameObject.CompareTag("Obstacle") && !hasBeenHit)
         {
             enabled = false;
             FindObjectOfType<KongGameManager>().KongLevelFailed();
+            hasBeenHit = true;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)

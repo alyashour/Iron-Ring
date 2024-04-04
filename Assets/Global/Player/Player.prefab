@@ -111,6 +111,9 @@ GameObject:
   - component: {fileID: 6941517946081553449}
   - component: {fileID: 2118767976085164390}
   - component: {fileID: 4322422205701971489}
+  - component: {fileID: 3243971241011287313}
+  - component: {fileID: 9210992753872522307}
+  - component: {fileID: 4688485273304918329}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -172,8 +175,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1281077859
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -35412776, guid: 37fc74d9ee4fdb44d8963cbe4ea09fd0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -219,8 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: e1cbed27dbea33845bd5d04aa45f47a6,
-    type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: e1cbed27dbea33845bd5d04aa45f47a6, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -270,7 +272,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.045}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -281,7 +283,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.13, y: 0.21}
+  m_Size: {x: 0.11, y: 0.08}
   m_EdgeRadius: 0
 --- !u!50 &4715352907816923321
 Rigidbody2D:
@@ -322,7 +324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbb5a043a41a5d4abf3ac021ce9fb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.75
   playerDirection: 0
   lockMovement: 0
   attackCooldown: 0.3
@@ -351,8 +352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePerHit: 10
-  _rb: {fileID: 0}
-  cooldownTime: 1
 --- !u!114 &2118767976085164390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,8 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finalDeathSprite: {fileID: 1724316754, guid: 37fc74d9ee4fdb44d8963cbe4ea09fd0, type: 3}
-  DeathHudPrefab: {fileID: 1492155403439957171, guid: 558471aec8fb6884bb1c993e0ea1197e,
-    type: 3}
+  DeathHudPrefab: {fileID: 1492155403439957171, guid: 558471aec8fb6884bb1c993e0ea1197e, type: 3}
 --- !u!114 &4322422205701971489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,3 +379,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionDistance: 1
+--- !u!114 &3243971241011287313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6923967991901825277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab423461355131468bb7c33c98bcf50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 0}
+  inventoryData: {fileID: 11400000, guid: e8f368e062008e84090e973216a4a206, type: 2}
+  initialItems:
+  - quantity: 2
+    item: {fileID: 11400000, guid: 20f355bea59f620488a15311fae36fdd, type: 2}
+    itemState: []
+  dropClip: {fileID: 0}
+  audioSource: {fileID: 0}
+--- !u!114 &9210992753872522307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6923967991901825277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554c4b15e424f0c40985813514596e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryData: {fileID: 11400000, guid: e8f368e062008e84090e973216a4a206, type: 2}
+--- !u!114 &4688485273304918329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6923967991901825277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e74029281724d49a5da1c136a100f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
+  inventoryData: {fileID: 11400000, guid: e8f368e062008e84090e973216a4a206, type: 2}
+  parametersToModify:
+  - itemParameter: {fileID: 11400000, guid: aeccb6c13736ffd409be74dd3dc39355, type: 2}
+    value: -10
+  itemCurrentState: []

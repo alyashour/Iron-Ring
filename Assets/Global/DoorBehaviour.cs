@@ -1,6 +1,7 @@
 using System;
 using Global.Portals;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Global
@@ -18,12 +19,21 @@ namespace Global
 
         void OnCollisionEnter2D(Collision2D other)
         {
+            updateGameState();
             var player = other.gameObject;
             if (other.gameObject.name == "Player")
             {
                 _playerTeleporter.TeleportAcrossScenes(player, sceneName, position);
             }
         }
+
+        private void updateGameState()
+        {
+            if (PlayerAttributes.GlobalGameState == 0 && SceneManager.GetActiveScene().name == "Home")
+            {
+                PlayerAttributes.GlobalGameState = 1;
+                PlayerAttributes.PlayerSpeed = 1.75f;
+            }
+        }
     }
 }
-

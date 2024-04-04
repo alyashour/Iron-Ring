@@ -14,6 +14,9 @@ TagManager:
   - Enemy
   - Hand
   - Projectile
+  - PopUp
+  - HUD
+  - Portal
   layers:
   - Default
   - TransparentFX

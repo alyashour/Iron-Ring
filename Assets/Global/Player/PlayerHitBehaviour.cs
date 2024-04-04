@@ -2,6 +2,7 @@ using Global.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Player behaviour for when they're hit
 // Author: Aiden
@@ -51,7 +52,7 @@ public class PlayerHitBehaviour : MonoBehaviour
 
         if (timeSinceHit > 0.1f)
         {
-            _spriteRenderer.color = Color.white;
+            _spriteRenderer.color = PlayerAttributes.PlayerColor;
         }
     }
 
@@ -68,12 +69,18 @@ public class PlayerHitBehaviour : MonoBehaviour
                 _collidedObject = collision.gameObject;
 
                 // Damage the player
-                PlayerAttributes.PlayerHealth -= damagePerHit;
+                if (collision.gameObject.name == "Golem Boss")
+                {
+                    PlayerAttributes.PlayerHealth -= 5;
+                } else
+                {
+                    PlayerAttributes.PlayerHealth -= damagePerHit;
+                }
+                
                 GetKnockback(_collidedObject);
 
                 // Update the hit time
                 lastHitTime = Time.time;
-
 
                 // Change the sprite colour
                 _spriteRenderer.color = Color.red;
@@ -88,6 +95,12 @@ public class PlayerHitBehaviour : MonoBehaviour
         _player.GetComponent<PlayerMovement>().lockMovement = true;
 
         Vector3 dir = transform.position - o.transform.position;
-        _rb.velocity = dir.normalized * PlayerAttributes.PlayerKnockback;
+
+        if (o.name == "Golem Boss") {
+            _rb.velocity = dir.normalized * 100f * Time.deltaTime;
+        } else
+        {
+            _rb.velocity = dir.normalized * PlayerAttributes.PlayerKnockback * Time.deltaTime;
+        }
     }
 }

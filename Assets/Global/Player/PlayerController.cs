@@ -13,6 +13,8 @@ namespace Global.Player
         void Start()
         {
             _playerMovement = gameObject.GetComponent<PlayerMovement>();
+
+            gameObject.GetComponent<SpriteRenderer>().color = PlayerAttributes.PlayerColor;
         }
 
         // when the player interacts with an object

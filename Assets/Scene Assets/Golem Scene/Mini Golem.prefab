@@ -176,4 +176,4 @@ MonoBehaviour:
   enemyHealth: 10
   enemyDamage: 1
   enemySpeed: 1
-  enemyKnockBack: 10
+  enemyKnockBack: 100

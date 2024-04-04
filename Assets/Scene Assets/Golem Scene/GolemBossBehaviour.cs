@@ -81,6 +81,8 @@ public class GolemBossBehaviour : MonoBehaviour
                 DestroyMiniGolems();
                 Destroy(gameObject, 0.25f);
                 Destroy(pathwayRocks, 0.25f);
+                PlayerAttributes.GlobalGameState = 2;
+                PlayerAttributes.GolemComplete = true;
             }
         }
        
@@ -164,8 +166,8 @@ public class GolemBossBehaviour : MonoBehaviour
             healthBar = healthBarInstance.transform.Find("Health");
         }
 
-        // 10% chance of lightning
-        int randomNumber = UnityEngine.Random.Range(1, 11);
+        // 5% chance of lightning
+        int randomNumber = UnityEngine.Random.Range(1, 21);
         if (randomNumber == 1) StrikeLightning();
     }
 
@@ -182,7 +184,7 @@ public class GolemBossBehaviour : MonoBehaviour
         GameObject lightningEffect = Instantiate(lightningInstance, player.transform.position + new Vector3(0, 1.7595f, 0), Quaternion.identity);
 
         // Deal damage to the player
-        PlayerAttributes.PlayerHealth -= 10;
+        PlayerAttributes.PlayerHealth -= 5;
 
         // Destroy lightning effect after a certain duration
         Destroy(lightningEffect, 0.5f);

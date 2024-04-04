@@ -80,6 +80,10 @@ namespace Global
             
             // find the destination portal
             GameObject portal = GameObject.Find(destinationPortalName);
+            if (portal == null)
+            {
+                portal = GameObject.FindGameObjectsWithTag(destinationPortalName)[0];
+            }
 
             // if we couldn't find the portal
             if (portal != null)
@@ -115,6 +119,9 @@ namespace Global
         {
             // load the new scene
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+
+            // ------- Saves the game before the scene is swapped ---------
+            InitializeGame.Save(sceneName);
 
             // wait until its done
             while (!asyncLoad.isDone)
