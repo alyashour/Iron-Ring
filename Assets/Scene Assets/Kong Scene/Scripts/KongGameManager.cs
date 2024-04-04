@@ -80,6 +80,7 @@ public class KongGameManager : MonoBehaviour
     {
         kongLevelWon = true;
         PlayerAttributes.KongComplete = true;
+        PlayerAttributes.GlobalGameState = 3;
         InitializeGame.Save();
         SceneManager.LoadScene("Forest");
         
