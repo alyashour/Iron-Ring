@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DarkForestGraveyard.unity
     guid: 370f320124349e24ca2bab3da622cb09
+  - enabled: 1
+    path: Assets/Scenes/Volcano Path.unity
+    guid: cc1de7d442a4c40be90b6b5693335d31
   m_configObjects: {}

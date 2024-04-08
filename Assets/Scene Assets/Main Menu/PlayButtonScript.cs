@@ -34,6 +34,7 @@ public class PlayButtonScript : MonoBehaviour
     public void LoadGame()
     {
         InitializeGame.Load();
+        PlayerAttributes.PlayerHealth = 100;
         SceneManager.LoadScene(PlayerAttributes.CurrentScene);
     }
 
