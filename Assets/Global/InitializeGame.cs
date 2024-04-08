@@ -209,6 +209,7 @@ public class InitializeGame : MonoBehaviour
 
             PlayerAttributes.NumOfFood = saveObject.numOfFood;
 
+            PlayerAttributes.Alive = true;
             PlayerAttributes.PlayerHealth = 100;
         }
         else
