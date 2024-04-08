@@ -47,3 +47,11 @@ MonoBehaviour:
   nameText: {fileID: 0}
   dialogueText: {fileID: 0}
   animator: {fileID: 0}
+  isOpen: 0
+  dialogue:
+    names: []
+    sentences:
+    - Oh, what's this?
+  OnEnd:
+    m_PersistentCalls:
+      m_Calls: []
