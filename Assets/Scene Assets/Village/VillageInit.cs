@@ -1,3 +1,4 @@
+using Global.Dialogue_System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -106,6 +107,7 @@ public class VillageInit : MonoBehaviour
     }
     private void Update()
     {
+
         if (state == 2)
         {
             
