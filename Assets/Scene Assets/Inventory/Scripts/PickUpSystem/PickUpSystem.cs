@@ -18,6 +18,10 @@ public class PickUpSystem : MonoBehaviour
                 item.DestroyItem();
             else
                 item.Quantity = reminder;
+            if (item.InventoryItem.Name == "Apple")
+            {
+                PlayerAttributes.NumOfFood = item.Quantity;
+            }
         }
     }
 }

@@ -28,8 +28,10 @@ namespace Invenory.UI
 
         private bool empty = true;
 
-        public void Awake()
+        public void Start()
         {
+            //itemImage = GetComponent<Image>();
+            //borderImage = GetComponent<Image>();
             ResetData();
             Deselect();
         }
