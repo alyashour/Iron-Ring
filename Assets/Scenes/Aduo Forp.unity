@@ -13259,8 +13259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235925ef602fd4b7f9d70458dc688240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Village
-  position: {x: -6.83, y: -1}
+  sceneName: Volcano Path
+  position: {x: 0, y: 0}
 --- !u!61 &1770071296
 BoxCollider2D:
   m_ObjectHideFlags: 0
