@@ -14,7 +14,7 @@ public class VillageInitializer : MonoBehaviour
             PlayerAttributes.StartScene = true;
         }*/
 
-        FindObjectOfType<DialogueTrigger>().TriggerDialogue();
+        if (PlayerAttributes.GlobalGameState == 1) FindObjectOfType<DialogueTrigger>().TriggerDialogue();
     }
 
     // Update is called once per frame
