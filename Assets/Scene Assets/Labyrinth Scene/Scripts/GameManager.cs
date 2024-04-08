@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
             // Win condition
             PlayerAttributes.GlobalGameState = 4;
             PlayerAttributes.PacComplete = true;
-            SceneManager.LoadScene("Village");
+            SceneManager.LoadScene("DarkForestGraveyard");
             
 
 
