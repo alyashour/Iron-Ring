@@ -208,6 +208,8 @@ public class InitializeGame : MonoBehaviour
             PlayerAttributes.PongComplete = saveObject.pongComplete;
 
             PlayerAttributes.NumOfFood = saveObject.numOfFood;
+
+            PlayerAttributes.PlayerHealth = 100;
         }
         else
         {
