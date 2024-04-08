@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Library Basement.unity
     guid: 56719579fc6ce43a19b489071e4f1b26
+  - enabled: 1
+    path: Assets/Scenes/DarkForestGraveyard.unity
+    guid: 370f320124349e24ca2bab3da622cb09
   m_configObjects: {}
